@@ -1,0 +1,9 @@
+module Constants
+  GAME_WIDTH  = 800
+  GAME_HEIGHT = 600
+  
+  GROUND_X_POS  = 0
+  GROUND_Y_POS  = 506
+  GROUND_WIDTH  = 800
+  GROUND_HEIGHT = 94
+end
