@@ -9,10 +9,6 @@ opal = Opal::Server.new { |s|
   s.main = 'main'
 }
 
-map opal.source_maps.prefix do
-  run opal.source_maps
-end
-
 map '/assets' do
   run opal.sprockets
 end
