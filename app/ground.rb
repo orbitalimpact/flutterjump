@@ -1,6 +1,8 @@
 require './constants'
 
 class Ground
+  attr_reader :sprite
+  
   def initialize(game)
     @sprite_key = "ground"
     @sprite_url = "assets/sprites/game_world/ground.png"
@@ -12,7 +14,11 @@ class Ground
   end
   
   def create
-    @game.add.tile_sprite(Constants::GROUND_X_POS, Constants::GROUND_Y_POS, Constants::GROUND_WIDTH, Constants::GROUND_HEIGHT, @sprite_key)
+    @sprite = @game.add.tile_sprite(Constants::GROUND_X_POS, Constants::GROUND_Y_POS, Constants::GROUND_WIDTH, Constants::GROUND_HEIGHT, @sprite_key)
+    @game.physics.arcade.enable(@sprite)
+    @sprite.body.immovable = true
+    
+    @sprite.auto_scroll(Constants::AUTO_SCROLL_X_SPEED, Constants::AUTO_SCROLL_Y_SPEED)
   end
   
   def update
