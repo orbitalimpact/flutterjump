@@ -3,6 +3,7 @@ require 'opal-phaser'
 require './constants'
 require './background'
 require './ground'
+require './fluttershy'
 
 class Game
   def initialize
@@ -31,7 +32,9 @@ class Game
   end
   
   def update
-    state.update do 
+    state.update do |game|
+      game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
+      
       entities_state_call :update
     end
   end
@@ -39,8 +42,9 @@ class Game
   def initialize_entities(game)
     @background = Background.new(game)
     @ground     = Ground.new(game)
+    @fluttershy = Fluttershy.new(game)
     
-    @game_entities = [@background, @ground]
+    @game_entities = [@background, @ground, @fluttershy]
   end
   
   def entities_state_call(method)
