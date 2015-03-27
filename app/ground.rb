@@ -1,4 +1,4 @@
-require './constants'
+require 'constants'
 
 class Ground
   attr_reader :sprite

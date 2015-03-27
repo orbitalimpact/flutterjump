@@ -1,4 +1,4 @@
-require './constants'
+require 'constants'
 
 class Fluttershy
   attr_reader :sprite

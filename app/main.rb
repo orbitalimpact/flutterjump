@@ -1,9 +1,10 @@
 require 'opal'
 require 'opal-phaser'
-require './constants'
-require './background'
-require './ground'
-require './fluttershy'
+require 'constants'
+require 'background'
+require 'ground'
+require 'fluttershy'
+require 'pp'
 
 class Game
   def initialize
