@@ -2,6 +2,8 @@ require './constants'
 
 class Fluttershy
   attr_reader :sprite
+  attr_reader :walking_key
+  attr_reader :flying_key
   
   def initialize(game)
     @sprite_key   = "fluttershy"
