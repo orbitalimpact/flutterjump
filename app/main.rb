@@ -4,6 +4,7 @@ require 'constants'
 require 'background'
 require 'ground'
 require 'fluttershy'
+require 'keys'
 require 'pp'
 
 class Game
@@ -38,15 +39,9 @@ class Game
         @fluttershy.sprite.animations.play(@fluttershy.flying_key)
       end
       
-      @spacebar = game.input.keyboard.add_key(Phaser::Keyboard::SPACEBAR)
-      @spacebar.on_down.add(jump)
       call_entities_state_method :create
       
-      @left  = game.input.keyboard.add_key(Phaser::Keyboard::LEFT)
-      @right = game.input.keyboard.add_key(Phaser::Keyboard::RIGHT)
-      @a     = game.input.keyboard.add_key(Phaser::Keyboard::A)
-      @d     = game.input.keyboard.add_key(Phaser::Keyboard::D)
-      
+      @keys.spacebar.on_down.add(jump)
     end
   end
   
@@ -54,26 +49,14 @@ class Game
     state.update do |game|
       game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
       
-      def move_right
-        @fluttershy.sprite.body.velocity.x = Constants::RIGHT_VELOCITY
+      @fluttershy.stop_moving
+      
+      if @keys.right.down? || @keys.d.down?
+        @fluttershy.move_right
       end
       
-      def move_left
-        @fluttershy.sprite.body.velocity.x = Constants::LEFT_VELOCITY
-      end
-      
-      def stop_moving
-        @fluttershy.sprite.body.velocity.x = Constants::STOPPED
-      end
-      
-      stop_moving
-      
-      if @right.down? || @d.down?
-        move_right
-      end
-      
-      if @left.down? || @a.down?
-        move_left
+      if @keys.left.down? || @keys.a.down?
+        @fluttershy.move_left
       end
       
       if @jumping && @fluttershy.sprite.body.touching.down
@@ -92,8 +75,9 @@ class Game
     @background = Background.new(game)
     @ground     = Ground.new(game)
     @fluttershy = Fluttershy.new(game)
+    @keys       = Keys.new(game)
     
-    @game_entities = [@background, @ground, @fluttershy]
+    @game_entities = [@background, @ground, @fluttershy, @keys]
   end
   
   def call_entities_state_method(method)
