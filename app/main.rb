@@ -22,7 +22,7 @@ class Game
   def preload
     state.preload do |game|
       initialize_entities(game)
-      entities_state_call :preload
+      call_entities_state_method :preload
     end
   end
   
@@ -40,13 +40,13 @@ class Game
       
       @spacebar = game.input.keyboard.add_key(Phaser::Keyboard::SPACEBAR)
       @spacebar.on_down.add(jump)
+      call_entities_state_method :create
       
       @left  = game.input.keyboard.add_key(Phaser::Keyboard::LEFT)
       @right = game.input.keyboard.add_key(Phaser::Keyboard::RIGHT)
       @a     = game.input.keyboard.add_key(Phaser::Keyboard::A)
       @d     = game.input.keyboard.add_key(Phaser::Keyboard::D)
       
-      entities_state_call :create
     end
   end
   
@@ -84,7 +84,7 @@ class Game
         @fluttershy.sprite.animations.play(@fluttershy.walking_key)
       end
       
-      entities_state_call :update
+      call_entities_state_method :update
     end
   end
   
@@ -96,7 +96,7 @@ class Game
     @game_entities = [@background, @ground, @fluttershy]
   end
   
-  def entities_state_call(method)
+  def call_entities_state_method(method)
     @game_entities.each do |entity|
       entity.send(method)
     end
