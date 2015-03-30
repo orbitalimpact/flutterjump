@@ -42,4 +42,16 @@ class Fluttershy
   def update
     # nothing in here for this class
   end
+  
+  def move_right
+    @sprite.body.velocity.x = Constants::RIGHT_VELOCITY
+  end
+  
+  def move_left
+    @sprite.body.velocity.x = Constants::LEFT_VELOCITY
+  end
+  
+  def stop_moving
+    @sprite.body.velocity.x = Constants::STOPPED
+  end
 end
