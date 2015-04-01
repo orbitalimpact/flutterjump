@@ -13,7 +13,7 @@ class Game
     create
     update
     
-    Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, render: Phaser::CANVAS, parent: "game", state: state, transparent: false, antialias: true, physics: nil)
+    Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game", state: state, transparent: false, antialias: true, physics: nil)
   end
   
   def state
