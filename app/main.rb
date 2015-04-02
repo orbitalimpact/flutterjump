@@ -2,6 +2,7 @@ require 'opal'
 require 'opal-phaser'
 require 'constants'
 require 'background'
+require 'obstacles'
 require 'ground'
 require 'fluttershy'
 require 'keys'
@@ -48,6 +49,7 @@ class Game
   def update
     state.update do |game|
       game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
+      game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group)
       
       @fluttershy.stop_moving
       
@@ -71,11 +73,12 @@ class Game
   
   def initialize_entities(game)
     @background = Background.new(game)
+    @obstacles  = Obstacles.new(game)
     @ground     = Ground.new(game)
     @fluttershy = Fluttershy.new(game)
     @keys       = Keys.new(game)
     
-    @game_entities = [@background, @ground, @fluttershy, @keys]
+    @game_entities = [@background, @obstacles, @ground, @fluttershy, @keys]
   end
   
   def call_entities_state_method(method)
