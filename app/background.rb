@@ -13,8 +13,4 @@ class Background
     @background = @game.add.sprite(0, 0, @sprite_key)
     @background.scale.setTo(1, 1)
   end
-  
-  def update
-    # nothing in here for this class
-  end
 end

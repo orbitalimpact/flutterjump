@@ -39,10 +39,6 @@ class Fluttershy
     @sprite.animations.play(@walking_key)
   end
   
-  def update
-    # nothing in here for this class
-  end
-  
   def move_right
     @sprite.body.velocity.x = Constants::RIGHT_VELOCITY
   end

@@ -66,8 +66,6 @@ class Game
         @fluttershy.sprite.animations.add(@fluttershy.walking_key, Constants::WALKING_FRAMES, Constants::FRAME_RATE, Constants::LOOP)
         @fluttershy.sprite.animations.play(@fluttershy.walking_key)
       end
-      
-      call_entities_state_method :update
     end
   end
   

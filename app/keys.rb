@@ -20,8 +20,4 @@ class Keys
     @a        = @game.input.keyboard.add_key(Phaser::Keyboard::A)
     @d        = @game.input.keyboard.add_key(Phaser::Keyboard::D)
   end
-  
-  def update
-    # nothing in here for this class
-  end
 end

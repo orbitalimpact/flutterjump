@@ -20,8 +20,4 @@ class Ground
     
     @sprite.auto_scroll(Constants::AUTO_SCROLL_X_SPEED, Constants::AUTO_SCROLL_Y_SPEED)
   end
-  
-  def update
-    # nothing in here for this class
-  end
 end
