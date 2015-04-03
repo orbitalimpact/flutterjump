@@ -14,10 +14,11 @@ class Keys
   end
   
   def create
-    @spacebar = @game.input.keyboard.add_key(Phaser::Keyboard::SPACEBAR)
-    @left     = @game.input.keyboard.add_key(Phaser::Keyboard::LEFT)
-    @right    = @game.input.keyboard.add_key(Phaser::Keyboard::RIGHT)
-    @a        = @game.input.keyboard.add_key(Phaser::Keyboard::A)
-    @d        = @game.input.keyboard.add_key(Phaser::Keyboard::D)
+    keys = {spacebar: Phaser::Keyboard::SPACEBAR, left: Phaser::Keyboard::LEFT, right: Phaser::Keyboard::RIGHT, a: Phaser::Keyboard::A, d: Phaser::Keyboard::D}
+    
+    keys.each do |name, key|
+      variable_value = @game.input.keyboard.add_key(key)
+      instance_variable_set("@#{name}", variable_value)
+    end
   end
 end
