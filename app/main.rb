@@ -23,6 +23,7 @@ class Game
   
   def preload
     state.preload do |game|
+      @game_over = false
       initialize_entities(game)
       call_entities_state_method :preload
     end
@@ -48,20 +49,35 @@ class Game
   
   def update
     state.update do |game|
+      game_over = proc do
+        @game_over = true
+        @obstacles.obstacle_generator.timer.stop
+        @ground.sprite.stop_scroll
+        @obstacles.group.set_all "body.velocity.x", Constants::STOPPED
+        @obstacles.animal_collectible.body.velocity.x = Constants::STOPPED
+        @fluttershy.sprite.load_texture("ouch")
+        @fluttershy.sprite.body.set_size(Constants::OUCH_WIDTH, Constants::OUCH_HEIGHT)
+        
+        keys = [Phaser::Keyboard::SPACEBAR, Phaser::Keyboard::LEFT, Phaser::Keyboard::RIGHT, Phaser::Keyboard::A, Phaser::Keyboard::D]
+        keys.each do |key|
+          game.input.keyboard.remove_key(key)
+        end
+      end
+      
       game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
-      game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group)
+      game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group, game_over)
       
       @fluttershy.stop_moving
       
-      if @keys.right.down? || @keys.d.down?
+      if (@keys.right.down? || @keys.d.down?) && @game_over == false
         @fluttershy.move_right
       end
       
-      if @keys.left.down? || @keys.a.down?
+      if (@keys.left.down? || @keys.a.down?) && @game_over == false
         @fluttershy.move_left
       end
       
-      if @jumping && @fluttershy.sprite.body.touching.down
+      if @jumping && @fluttershy.sprite.body.touching.down && @game_over == false
         @jumping = false
         @fluttershy.sprite.load_texture(@fluttershy.walking_key)
         @fluttershy.sprite.body.set_size(Constants::WALKING_WIDTH, Constants::WALKING_HEIGHT)
