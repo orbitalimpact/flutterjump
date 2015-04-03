@@ -25,8 +25,8 @@ class Fluttershy
   
   def preload
     @game.load.atlas(@walking_key, @walking_img, @walking_json)
-    @game.load.atlas(@flying_key, @flying_img, @flying_json)
-    @game.load.image(@ouch_key, @ouch_img)
+    @game.load.atlas(@flying_key,  @flying_img, @flying_json)
+    @game.load.image(@ouch_key,    @ouch_img)
   end
   
   def create
@@ -36,6 +36,7 @@ class Fluttershy
     @sprite.body.gravity.y = Constants::GRAVITY
     
     @sprite.animations.add(@walking_key, Constants::WALKING_FRAMES, Constants::FRAME_RATE, Constants::LOOP)
+    @sprite.animations.add(@flying_key, Constants::FLYING_FRAMES, Constants::FRAME_RATE, Constants::LOOP)
     @sprite.animations.play(@walking_key)
   end
   

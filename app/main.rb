@@ -54,7 +54,6 @@ class Game
         @fluttershy.sprite.body.velocity.y = Constants::JUMP_VELOCITY
     
         @fluttershy.sprite.load_texture(@fluttershy.flying_key)
-        @fluttershy.sprite.animations.add(@fluttershy.flying_key, Constants::FLYING_FRAMES, Constants::FRAME_RATE, Constants::LOOP)
         @fluttershy.sprite.body.set_size(Constants::FLYING_WIDTH, Constants::FLYING_HEIGHT)
         @fluttershy.sprite.animations.play(@fluttershy.flying_key)
       end
@@ -99,7 +98,6 @@ class Game
         @jumping = false
         @fluttershy.sprite.load_texture(@fluttershy.walking_key)
         @fluttershy.sprite.body.set_size(Constants::WALKING_WIDTH, Constants::WALKING_HEIGHT)
-        @fluttershy.sprite.animations.add(@fluttershy.walking_key, Constants::WALKING_FRAMES, Constants::FRAME_RATE, Constants::LOOP)
         @fluttershy.sprite.animations.play(@fluttershy.walking_key)
       end
     end
