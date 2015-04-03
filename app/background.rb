@@ -1,3 +1,5 @@
+require 'constants'
+
 class Background
   def initialize(game)
     @sprite_key = "background"
@@ -10,7 +12,7 @@ class Background
   end
   
   def create
-    @background = @game.add.sprite(0, 0, @sprite_key)
-    @background.scale.setTo(1, 1)
+    @background = @game.add.sprite(Constants::BACKGROUND_X_POS, Constants::BACKGROUND_Y_POS, @sprite_key)
+    @background.scale.set(Constants::BACKGROUND_SCALE_FACTOR)
   end
 end
