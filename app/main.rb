@@ -14,7 +14,24 @@ class Game
     create
     update
     
-    Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game", state: state, transparent: false, antialias: true, physics: nil)
+    Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game", state: state)
+  end
+  
+  def initialize_entities(game)
+    @background = Background.new(game)
+    @score      = Score.new(game)
+    @obstacles  = Obstacles.new(game)
+    @ground     = Ground.new(game)
+    @fluttershy = Fluttershy.new(game)
+    @keys       = Keys.new(game)
+    
+    @game_entities = [@background, @score, @obstacles, @ground, @fluttershy, @keys]
+  end
+  
+  def call_entities_state_method(method)
+    @game_entities.each do |entity|
+      entity.send(method)
+    end
   end
   
   def state
@@ -84,22 +101,6 @@ class Game
         @fluttershy.sprite.animations.add(@fluttershy.walking_key, Constants::WALKING_FRAMES, Constants::FRAME_RATE, Constants::LOOP)
         @fluttershy.sprite.animations.play(@fluttershy.walking_key)
       end
-    end
-  end
-  
-  def initialize_entities(game)
-    @background = Background.new(game)
-    @obstacles  = Obstacles.new(game)
-    @ground     = Ground.new(game)
-    @fluttershy = Fluttershy.new(game)
-    @keys       = Keys.new(game)
-    
-    @game_entities = [@background, @obstacles, @ground, @fluttershy, @keys]
-  end
-  
-  def call_entities_state_method(method)
-    @game_entities.each do |entity|
-      entity.send(method)
     end
   end
 end
