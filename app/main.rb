@@ -81,8 +81,15 @@ class Game
         end
       end
       
+      collect_animal = proc do
+        @obstacles.animal_collectible.kill
+        @score.amount += 1
+        @score.display.text = @score.amount
+      end
+      
       game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
       game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group, game_over)
+      game.physics.arcade.collide(@fluttershy.sprite, @obstacles.animal_collectible, collect_animal)
       
       @fluttershy.stop_moving
       
