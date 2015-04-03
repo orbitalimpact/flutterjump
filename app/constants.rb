@@ -2,6 +2,13 @@ module Constants
   GAME_WIDTH              = 800
   GAME_HEIGHT             = 600
   
+  BACKGROUND_X_POS        = 0
+  BACKGROUND_Y_POS        = 0
+  BACKGROUND_SCALE_FACTOR = 1
+  
+  SCORE_X_POS             = 400
+  SCORE_Y_POS             = 100
+  
   GROUND_X_POS            = 0
   GROUND_Y_POS            = 506
   GROUND_WIDTH            = 800
@@ -11,6 +18,9 @@ module Constants
   
   FLUTTERSHY_X_POS        = 270
   FLUTTERSHY_Y_POS        = 420
+  
+  OUCH_WIDTH              = 102
+  OUCH_HEIGHT             = 68
   
   WALKING_WIDTH           = 102
   WALKING_HEIGHT          = 86
@@ -34,6 +44,11 @@ module Constants
   TOP_RANDOM_RANGE_MAX    = -100
   BOTTOM_RANDOM_RANGE_MIN = 400
   BOTTOM_RANDOM_RANGE_MAX = 325
+  
+  OBSTACLES_START_X_POS   = 800
+  
+  ANIMAL_SCALE_FACTOR     = 0.05
+  ANIMAL_X_START_POS      = 850
   
   TIME_INTERVAL           = 3
 end
