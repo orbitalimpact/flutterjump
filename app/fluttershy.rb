@@ -30,7 +30,7 @@ class Fluttershy
   end
   
   def create
-    @sprite = @game.add.sprite(Constants::FLUTTERSHY_X_POS, Constants::FLUTTERSHY_Y_POS, @walking_key)
+    @sprite = @game.add.sprite(Constants::FLUTTERSHY_START_X_POS, Constants::FLUTTERSHY_START_Y_POS, @walking_key)
     @game.physics.arcade.enable(@sprite)
     @sprite.body.collide_world_bounds = true
     @sprite.body.gravity.y = Constants::GRAVITY
