@@ -47,18 +47,18 @@ class Obstacles
     animals = [@bunny_key, @bird_key, @duck_key, @ferret_key, @beaver_key, @squirrel_key]
     
     generate_obstacles = proc do
-      top_random_range    = @game.rnd.integer_in_range(Constants::TOP_RANDOM_RANGE_MIN, Constants::TOP_RANDOM_RANGE_MAX)
-      bottom_random_range = @game.rnd.integer_in_range(Constants::BOTTOM_RANDOM_RANGE_MIN, Constants::BOTTOM_RANDOM_RANGE_MAX)
+      top_obstacle_y_range    = @game.rnd.integer_in_range(Constants::TOP_OBSTACLE_Y_RANGE_MIN, Constants::TOP_OBSTACLE_Y_RANGE_MAX)
+      bottom_obstacle_y_range = @game.rnd.integer_in_range(Constants::BOTTOM_OBSTACLE_Y_RANGE_MIN, Constants::BOTTOM_OBSTACLE_Y_RANGE_MAX)
       
-      top_obstacle    = @group.create(Constants::OBSTACLES_START_X_POS, top_random_range, @top_obstacle_key)
-      bottom_obstacle = @group.create(Constants::OBSTACLES_START_X_POS, bottom_random_range, @bottom_obstacle_key)
+      top_obstacle    = @group.create(Constants::OBSTACLES_START_X_POS, top_obstacle_y_range, @top_obstacle_key)
+      bottom_obstacle = @group.create(Constants::OBSTACLES_START_X_POS, bottom_obstacle_y_range, @bottom_obstacle_key)
       @group.set_all "body.immovable", true
       @group.set_all "body.velocity.x", Constants::LEFT_VELOCITY
       
       animal_y_pos  = (bottom_obstacle.y - top_obstacle.y) / 2
       random_animal = rand(6)
       
-      @animal_collectible = @game.add.sprite(Constants::ANIMAL_X_START_POS, animal_y_pos, animals[random_animal])
+      @animal_collectible = @game.add.sprite(Constants::ANIMAL_START_X_POS, animal_y_pos, animals[random_animal])
       @animal_collectible.scale.set(Constants::ANIMAL_SCALE_FACTOR)
       @game.physics.arcade.enable(@animal_collectible)
       @animal_collectible.body.velocity.x = Constants::LEFT_VELOCITY
