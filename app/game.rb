@@ -1,12 +1,3 @@
-require 'opal'
-require 'opal-phaser'
-require 'constants'
-require 'background'
-require 'score'
-require 'obstacles'
-require 'ground'
-require 'fluttershy'
-require 'keys'
 require 'pp'
 
 class Game
@@ -20,13 +11,13 @@ class Game
   
   def initialize_entities(game)
     @background = Background.new(game)
-    @score      = Score.new(game)
     @obstacles  = Obstacles.new(game)
     @ground     = Ground.new(game)
+    @score      = Score.new(game)
     @fluttershy = Fluttershy.new(game)
     @keys       = Keys.new(game)
     
-    @game_entities = [@background, @score, @obstacles, @ground, @fluttershy, @keys]
+    @game_entities = [@background, @obstacles, @ground, @score, @fluttershy, @keys]
   end
   
   def call_entities_state_method(method)
@@ -75,8 +66,8 @@ class Game
         @fluttershy.sprite.load_texture("ouch")
         @fluttershy.sprite.body.set_size(Constants::OUCH_WIDTH, Constants::OUCH_HEIGHT)
         
-        keys = [Phaser::Keyboard::SPACEBAR, Phaser::Keyboard::LEFT, Phaser::Keyboard::RIGHT, Phaser::Keyboard::A, Phaser::Keyboard::D]
-        keys.each do |key|
+        keys_to_remove = [Phaser::Keyboard::SPACEBAR, Phaser::Keyboard::LEFT, Phaser::Keyboard::RIGHT, Phaser::Keyboard::A, Phaser::Keyboard::D]
+        keys_to_remove.each do |key|
           game.input.keyboard.remove_key(key)
         end
       end
