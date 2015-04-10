@@ -46,9 +46,9 @@ module Constants
   LOOP                        = true
   
   # Obstacles' range minimums and maximums
-  TOP_OBSTACLE_Y_RANGE_MIN    = -140
+  TOP_OBSTACLE_Y_RANGE_MIN    = -135
   TOP_OBSTACLE_Y_RANGE_MAX    = -90
-  BOTTOM_OBSTACLE_Y_RANGE_MIN = 380
+  BOTTOM_OBSTACLE_Y_RANGE_MIN = 375
   BOTTOM_OBSTACLE_Y_RANGE_MAX = 320
   
   # Obstacles' starting position
