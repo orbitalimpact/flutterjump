@@ -1,7 +1,7 @@
 require_relative 'constants'
 
 class Ground
-  attr_reader :sprite
+  attr_accessor :sprite
   
   def initialize(game)
     @sprite_key = "ground"
