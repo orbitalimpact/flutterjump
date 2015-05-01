@@ -52,8 +52,8 @@ class Obstacles
       
       top_obstacle    = @group.create(Constants::OBSTACLES_START_X_POS, top_obstacle_y_range, @top_obstacle_key)
       bottom_obstacle = @group.create(Constants::OBSTACLES_START_X_POS, bottom_obstacle_y_range, @bottom_obstacle_key)
-      @group.set_all "body.immovable", true
-      @group.set_all "body.velocity.x", Constants::LEFT_VELOCITY
+      @group.set_all("body.immovable", true)
+      @group.set_all("body.velocity.x", Constants::LEFT_VELOCITY)
       
       animal_y_pos  = (bottom_obstacle.y - top_obstacle.y) / 2
       random_animal = rand(6)
