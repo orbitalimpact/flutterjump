@@ -25,14 +25,15 @@ class Game
   end
   
   def initialize_entities(game)
-    @background = Background.new(game)
-    @obstacles  = Obstacles.new(game)
-    @ground     = Ground.new(game)
-    @score      = Score.new(game)
-    @fluttershy = Fluttershy.new(game)
-    @keys       = Keys.new(game)
+    @background        = Background.new(game)
+    @obstacles         = Obstacles.new(game)
+    @ground            = Ground.new(game)
+    @text_instructions = TextInstructions.new(game)
+    @score             = Score.new(game)
+    @fluttershy        = Fluttershy.new(game)
+    @keys              = Keys.new(game)
     
-    @game_entities = [@background, @obstacles, @ground, @score, @fluttershy, @keys]
+    @game_entities = [@background, @obstacles, @text_instructions, @ground, @score, @fluttershy, @keys]
   end
   
   def call_entities_state_method(method)
