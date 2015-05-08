@@ -20,7 +20,7 @@ class Game
     
     Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game", state: state)
     
-    @which_scene   = "title"
+    @current_scene   = "title"
     @scene_counter = 0
   end
   
@@ -47,7 +47,6 @@ class Game
   
   def preload
     state.preload do |game|
-      @game_over = false
       initialize_entities(game)
       
       game.load.image("title", "assets/text/title.png")
@@ -72,30 +71,28 @@ class Game
             @current_scene = "game over"
           end
         end
-      
         
         collect_animal = proc do
           @obstacles.animal_collectible.kill
           @score.amount += 1
           @score.display.text = @score.amount
         end
-      
+        
         game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
-        game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group, game_over)
+        game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group, change_scene)
         game.physics.arcade.collide(@fluttershy.sprite, @obstacles.animal_collectible, collect_animal)
-      
-      
+        
         @fluttershy.stop_moving
-      
-        if (@keys.right.down? || @keys.d.down?) && @game_over == false
+        
+        if (@keys.right.down? || @keys.d.down?) && @current_scene == "playing"
           @fluttershy.move_right
         end
-      
-        if (@keys.left.down? || @keys.a.down?) && @game_over == false
+        
+        if (@keys.left.down? || @keys.a.down?) && @current_scene == "playing"
           @fluttershy.move_left
         end
       
-        if @jumping && @fluttershy.sprite.body.touching.down && @game_over == false
+        if @jumping && @fluttershy.sprite.body.touching.down && @current_scene == "playing"
           @jumping = false
           @fluttershy.sprite.load_texture(@fluttershy.walking_key)
           @fluttershy.sprite.body.set_size(Constants::WALKING_WIDTH, Constants::WALKING_HEIGHT)
