@@ -3,10 +3,16 @@ module Constants
   GAME_WIDTH                  = 800
   GAME_HEIGHT                 = 600
   
+  # Game text positions
   TITLE_X_POS                 = 240
   TITLE_Y_POS                 = 250
   TITLE_DIRECTIONS_X_POS      = 310
   TITLE_DIRECTIONS_Y_POS      = 320
+  
+  GAMEOVER_X_POS              = 115
+  GAMEOVER_Y_POS              = 140
+  TRY_AGAIN_X_POS             = 230
+  TRY_AGAIN_Y_POS             = 335
   
   # Background properties
   BACKGROUND_X_POS            = 0
