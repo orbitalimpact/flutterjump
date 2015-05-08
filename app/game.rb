@@ -50,8 +50,6 @@ class Game
     state.preload do |game|
       initialize_entities(game)
       
-      game.load.image("title", "assets/text/title.png")
-      game.load.image("title_directions", "assets/text/title_directions.png")
       call_entities_state_method :preload
     end
   end
