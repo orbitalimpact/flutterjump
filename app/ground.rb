@@ -5,12 +5,12 @@ class Ground
   
   def initialize(game)
     @sprite_key = "ground"
-    @sprite_url = "assets/sprites/game_world/ground.png"
+    @sprite_path = "assets/sprites/game_world/ground.png"
     @game       = game
   end
   
   def preload
-    @game.load.image(@sprite_key, @sprite_url)
+    @game.load.image(@sprite_key, @sprite_path)
   end
   
   def create
