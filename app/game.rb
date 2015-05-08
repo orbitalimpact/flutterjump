@@ -1,6 +1,18 @@
 require 'pp'
+require_relative 'scenes'
 
 class Game
+  attr_reader   :background
+  attr_reader   :obstacles
+  attr_reader   :ground
+  attr_reader   :text_instructions
+  attr_reader   :score
+  attr_reader   :fluttershy
+  attr_reader   :keys
+  attr_writer   :jumping
+  attr_accessor :current_scene
+  attr_accessor :scene_counter
+  
   def initialize
     preload
     create
@@ -33,23 +45,6 @@ class Game
     @state ||= Phaser::State.new
   end
   
-  def play_scene
-    jump = proc do
-      @jumping = true
-      @fluttershy.sprite.body.velocity.y = Constants::JUMP_VELOCITY
-    
-      @fluttershy.sprite.load_texture(@fluttershy.flying_key)
-      @fluttershy.sprite.body.set_size(Constants::FLYING_WIDTH, Constants::FLYING_HEIGHT)
-      @fluttershy.sprite.animations.play(@fluttershy.flying_key)
-    end
-  
-    call_entities_state_method :create
-  
-    @keys.spacebar.on_down.add(jump)
-    
-    @scene_counter += 1
-  end
-  
   def preload
     state.preload do |game|
       @game_over = false
@@ -63,45 +58,22 @@ class Game
   
   def create
     state.create do |game|
-      @background.create
-      @ground.create
-      title = game.add.image(Constants::TITLE_X_POS, Constants::TITLE_Y_POS, "title")
-      title_directions = game.add.image(Constants::TITLE_DIRECTIONS_X_POS, Constants::TITLE_DIRECTIONS_Y_POS, "title_directions")
-      
-      change_scene = proc do
-        if @which_scene == "title"
-          title.destroy
-          @background.sprite.destroy
-          @ground.sprite.destroy
-        end
-        
-        @which_scene = "playing"
-      end
-      
-      game.input.on_down.add(change_scene)
+      Scenes::title_scene(game, self)
     end
   end
   
   def update
     state.update do |game|
-      if @which_scene == "playing" && @scene_counter == 0
-        play_scene
-      elsif @which_scene == "playing"
-        game_over = proc do
-          @game_over = true
-          @obstacles.obstacle_generator.timer.stop
-          @ground.sprite.stop_scroll
-          @obstacles.group.set_all("body.velocity.x", Constants::STOPPED)
-          @obstacles.animal_collectible.body.velocity.x = Constants::STOPPED
-          @fluttershy.sprite.load_texture("ouch")
-          @fluttershy.sprite.body.set_size(Constants::OUCH_WIDTH, Constants::OUCH_HEIGHT)
-        
-          keys_to_remove = [Phaser::Keyboard::SPACEBAR, Phaser::Keyboard::LEFT, Phaser::Keyboard::RIGHT, Phaser::Keyboard::A, Phaser::Keyboard::D]
-          keys_to_remove.each do |key|
-            game.input.keyboard.remove_key(key)
+      if @current_scene == "playing" && @scene_counter == 0
+        Scenes::play_scene(game, self)
+      elsif @current_scene == "playing"
+        change_scene = proc do
+          if @current_scene == "playing"
+            @current_scene = "game over"
           end
         end
       
+        
         collect_animal = proc do
           @obstacles.animal_collectible.kill
           @score.amount += 1
@@ -129,6 +101,24 @@ class Game
           @fluttershy.sprite.body.set_size(Constants::WALKING_WIDTH, Constants::WALKING_HEIGHT)
           @fluttershy.sprite.animations.play(@fluttershy.walking_key)
         end
+      elsif @current_scene == "game over" && @scene_counter == 1
+        Scenes::game_over_scene(game, self)
+      elsif @current_scene == "game over"
+        change_scene = proc do
+          if @current_scene == "game over"
+            @fluttershy.sprite.destroy
+            @obstacles.group.destroy
+            @obstacles.animal_collectible.destroy
+            @score.amount  = 0
+            @scene_counter = 0
+            @current_scene = "playing"
+          end
+        end
+        
+        game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
+        game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group)
+        
+        game.input.on_down.add(change_scene)
       end
     end
   end
