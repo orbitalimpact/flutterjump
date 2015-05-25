@@ -3,16 +3,23 @@ module Constants
   GAME_WIDTH                  = 800
   GAME_HEIGHT                 = 600
   
-  # Game text positions
+  # Title scene text positions
   TITLE_X_POS                 = 240
   TITLE_Y_POS                 = 250
   TITLE_DIRECTIONS_X_POS      = 310
   TITLE_DIRECTIONS_Y_POS      = 320
   
+  # Gameover scene text positions
   GAMEOVER_X_POS              = 115
   GAMEOVER_Y_POS              = 140
   TRY_AGAIN_X_POS             = 230
   TRY_AGAIN_Y_POS             = 335
+  
+  # Intro story properties
+  SLIDES_X_SCALE_FACTOR       = 1.235
+  SLIDES_Y_SCALE_FACTOR       = 1.48
+  SLIDES_X_POS                = 0
+  SLIDES_Y_POS                = 0
   
   # Background properties
   BACKGROUND_X_POS            = 0

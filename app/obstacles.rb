@@ -50,8 +50,12 @@ class Obstacles
       top_obstacle_y_range    = @game.rnd.integer_in_range(Constants::TOP_OBSTACLE_Y_RANGE_MIN, Constants::TOP_OBSTACLE_Y_RANGE_MAX)
       bottom_obstacle_y_range = @game.rnd.integer_in_range(Constants::BOTTOM_OBSTACLE_Y_RANGE_MIN, Constants::BOTTOM_OBSTACLE_Y_RANGE_MAX)
       
-      top_obstacle    = @group.create(Constants::OBSTACLES_START_X_POS, top_obstacle_y_range, @top_obstacle_key)
-      bottom_obstacle = @group.create(Constants::OBSTACLES_START_X_POS, bottom_obstacle_y_range, @bottom_obstacle_key)
+      top_obstacle    = @group.create(Constants::OBSTACLES_START_X_POS, Constants::TOP_OBSTACLE_Y_RANGE_MIN, @top_obstacle_key)
+      top_obstacle.body.set_size(115, 261, 20, 0)
+      
+      bottom_obstacle = @group.create(Constants::OBSTACLES_START_X_POS, Constants::BOTTOM_OBSTACLE_Y_RANGE_MIN, @bottom_obstacle_key)
+      bottom_obstacle.body.set_size(128, 284, 19, 33)
+      
       @group.set_all("body.immovable", true)
       @group.set_all("body.velocity.x", Constants::LEFT_VELOCITY)
       
