@@ -70,7 +70,7 @@ class Flutterjump
             @story_slides.slide.destroy
             @current_scene = "playing"
           end
-        
+          
           @keys.esc.on_down.add(change_scene)
           if @story_slides.slide_number == 23
             change_scene.call
@@ -85,27 +85,27 @@ class Flutterjump
               @current_scene = "game over"
             end
           end
-        
+          
           collect_animal = proc do
             @obstacles.animal_collectible.kill
             @score.amount += 1
             @score.display.text = @score.amount
           end
-        
+          
           game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
           game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group, change_scene)
           game.physics.arcade.collide(@fluttershy.sprite, @obstacles.animal_collectible, collect_animal)
-        
+          
           @fluttershy.stop_moving
-        
+          
           if (@keys.right.down? || @keys.d.down?)
             @fluttershy.move_right
           end
-        
+          
           if (@keys.left.down? || @keys.a.down?)
             @fluttershy.move_left
           end
-        
+          
           if @jumping && @fluttershy.sprite.body.touching.down
             @jumping = false
             @fluttershy.sprite.load_texture(@fluttershy.walking_key)
@@ -127,10 +127,10 @@ class Flutterjump
               @current_scene = "playing"
             end
           end
-        
+          
           game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
           game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group)
-        
+          
           game.input.on_down.add(change_scene)
         end
       end
