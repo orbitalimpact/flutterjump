@@ -71,7 +71,8 @@ class Flutterjump
             @current_scene = "playing"
           end
           
-          @keys.esc.on_down.add(change_scene)
+          @keys.esc.on(:down, &change_scene)
+          
           if @story_slides.slide_number == 23
             change_scene.call
           end
@@ -131,7 +132,7 @@ class Flutterjump
           game.physics.arcade.collide(@fluttershy.sprite, @ground.sprite)
           game.physics.arcade.collide(@fluttershy.sprite, @obstacles.group)
           
-          game.input.on_down.add(change_scene)
+          game.input.on(:down, &change_scene)
         end
       end
     end

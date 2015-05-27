@@ -15,7 +15,7 @@ module Scenes
       end
     end
     
-    phaser_game.input.on_down.add(change_scene)
+    phaser_game.input.on(:down, &change_scene)
   end
   
   def self.story_slides(phaser_game, flutterjump)
@@ -40,7 +40,7 @@ module Scenes
     end
     
     next_slide.call
-    phaser_game.input.on_down.add(next_slide)
+    phaser_game.input.on(:down, &next_slide)
     
     flutterjump.scene_counter += 1
   end
@@ -61,7 +61,7 @@ module Scenes
       object.create
     end
     
-    flutterjump.keys.spacebar.on_down.add(jump)
+    flutterjump.keys.spacebar.on(:down, &jump)
     
     flutterjump.scene_counter += 1
   end
@@ -77,7 +77,7 @@ module Scenes
     flutterjump.fluttershy.sprite.load_texture(flutterjump.fluttershy.ouch_key)
     flutterjump.fluttershy.sprite.body.set_size(Constants::OUCH_WIDTH, Constants::OUCH_HEIGHT)
     flutterjump.fluttershy.stop_moving
-  
+    
     keys_to_remove = [Phaser::Keyboard::SPACEBAR, Phaser::Keyboard::LEFT, Phaser::Keyboard::RIGHT, Phaser::Keyboard::A, Phaser::Keyboard::D]
     keys_to_remove.each do |key|
       phaser_game.input.keyboard.remove_key(key)
