@@ -1,13 +1,57 @@
 require 'opal'
 require 'opal-phaser'
+require 'pp'
 
 require_relative 'constants'
-require_relative 'story_slides'
-require_relative 'background'
-require_relative 'obstacles'
-require_relative 'ground'
-require_relative 'text_instructions'
-require_relative 'score'
-require_relative 'fluttershy'
-require_relative 'keys'
-require_relative 'flutterjump'
+
+require_relative 'game_objects/story_slides'
+require_relative 'game_objects/background'
+require_relative 'game_objects/obstacles'
+require_relative 'game_objects/ground'
+require_relative 'game_objects/text_instructions'
+require_relative 'game_objects/score'
+require_relative 'game_objects/fluttershy'
+require_relative 'game_objects/keys'
+
+require_relative 'states/master_state'
+require_relative 'states/title'
+require_relative 'states/story'
+require_relative 'states/playing'
+
+class Flutterjump
+  attr_reader   :story_slides
+  attr_reader   :background
+  attr_reader   :obstacles
+  attr_reader   :ground
+  attr_reader   :text_instructions
+  attr_reader   :score
+  attr_reader   :fluttershy
+  attr_reader   :keys
+  
+  attr_reader   :game_objects
+  attr_accessor :jumping
+  
+  def initialize
+    @game     = Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game")
+    title     = Title.new(@game, self)
+    story     = Story.new(@game, self)
+    playing   = Playing.new(@game, self)
+    
+    @game.state.add(:title, title, true)
+    @game.state.add(:story, story)
+    @game.state.add(:playing, playing)
+  end
+  
+  def initialize_objects
+    @story_slides      = StorySlides.new(@game)
+    @background        = Background.new(@game)
+    @obstacles         = Obstacles.new(@game)
+    @ground            = Ground.new(@game)
+    @text_instructions = TextInstructions.new(@game)
+    @score             = Score.new(@game)
+    @fluttershy        = Fluttershy.new(@game)
+    @keys              = Keys.new(@game)
+    
+    @game_objects = [@story_slides, @background, @obstacles, @text_instructions, @ground, @score, @fluttershy, @keys]
+  end
+end
