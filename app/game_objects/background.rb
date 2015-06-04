@@ -1,12 +1,12 @@
-require_relative 'constants'
+require_relative '../constants'
 
 class Background
   attr_reader :sprite
   
   def initialize(game)
-    @sprite_key = "background"
+    @sprite_key  = "background"
     @sprite_path = "assets/sprites/game_world/background.png"
-    @game       = game
+    @game        = game
   end
   
   def preload

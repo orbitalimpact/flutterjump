@@ -1,4 +1,4 @@
-require_relative 'constants'
+require_relative '../constants'
 
 class Obstacles
   attr_reader :group
@@ -50,17 +50,17 @@ class Obstacles
       top_obstacle_y_range    = @game.rnd.integer_in_range(Constants::TOP_OBSTACLE_Y_RANGE_MIN, Constants::TOP_OBSTACLE_Y_RANGE_MAX)
       bottom_obstacle_y_range = @game.rnd.integer_in_range(Constants::BOTTOM_OBSTACLE_Y_RANGE_MIN, Constants::BOTTOM_OBSTACLE_Y_RANGE_MAX)
       
-      top_obstacle    = @group.create(Constants::OBSTACLES_START_X_POS, Constants::TOP_OBSTACLE_Y_RANGE_MIN, @top_obstacle_key)
-      top_obstacle.body.set_size(115, 261, 20, 0)
+      top_obstacle    = @group.create(Constants::OBSTACLES_START_X_POS, top_obstacle_y_range, @top_obstacle_key)
+      top_obstacle.body.set_size(Constants::TOP_OBSTACLE_WIDTH, Constants::TOP_OBSTACLE_HEIGHT, Constants::TOP_OBSTACLE_X_OFFSET)
       
-      bottom_obstacle = @group.create(Constants::OBSTACLES_START_X_POS, Constants::BOTTOM_OBSTACLE_Y_RANGE_MIN, @bottom_obstacle_key)
-      bottom_obstacle.body.set_size(128, 284, 19, 33)
+      bottom_obstacle = @group.create(Constants::OBSTACLES_START_X_POS, bottom_obstacle_y_range, @bottom_obstacle_key)
+      bottom_obstacle.body.set_size(Constants::BOTTOM_OBSTACLE_WIDTH, Constants::BOTTOM_OBSTACLE_HEIGHT, Constants::BOTTOM_OBSTACLE_X_OFFSET, Constants::BOTTOM_OBSTACLE_Y_OFFSET)
       
       @group.set_all("body.immovable", true)
       @group.set_all("body.velocity.x", Constants::LEFT_VELOCITY)
       
       animal_y_pos  = (bottom_obstacle.y - top_obstacle.y) / 2
-      random_animal = rand(6)
+      random_animal = rand(animals.length)
       
       @animal_collectible = @game.add.sprite(Constants::ANIMAL_START_X_POS, animal_y_pos, animals[random_animal])
       @animal_collectible.scale.set(Constants::ANIMAL_SCALE_FACTOR)

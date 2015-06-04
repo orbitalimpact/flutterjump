@@ -1,12 +1,12 @@
-require_relative 'constants'
+require_relative '../constants'
 
 class Ground
   attr_accessor :sprite
   
   def initialize(game)
-    @sprite_key = "ground"
+    @sprite_key  = "ground"
     @sprite_path = "assets/sprites/game_world/ground.png"
-    @game       = game
+    @game        = game
   end
   
   def preload
