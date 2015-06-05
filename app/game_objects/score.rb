@@ -2,7 +2,7 @@ require_relative '../constants'
 
 class Score
   attr_accessor :amount
-  attr_reader :display
+  attr_reader   :display
   
   def initialize(game)
     @game = game
