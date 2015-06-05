@@ -28,6 +28,12 @@ class Playing < MasterState
       if @game_over == false
         @game_over = true
         
+        if @@flutterjump.score.amount > $$.localStorage.getItem("high_score").to_i || !$$.localStorage.getItem("high_score")
+          $$.localStorage.setItem("high_score", @@flutterjump.score.amount)
+        end
+        
+        @@phaser_game.add.text(Constants::HIGH_SCORE_X_POS, Constants::HIGH_SCORE_Y_POS, "High score: #{$$.localStorage.getItem("high_score")}", {font: "30px Verdana"})
+        
         @game_over_text = @@phaser_game.add.image(Constants::GAME_OVER_X_POS, Constants::GAME_OVER_Y_POS, @@flutterjump.text_instructions.game_over_img_key)
         @try_again_text = @@phaser_game.add.sprite(Constants::TRY_AGAIN_X_POS, Constants::TRY_AGAIN_Y_POS, @@flutterjump.text_instructions.try_again_img_key)
         
