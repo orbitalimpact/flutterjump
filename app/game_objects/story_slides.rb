@@ -5,7 +5,6 @@ class StorySlides
   attr_accessor :slide_number
   
   def initialize(game)
-    @slide        = nil
     @slide_number = 0
     
     @game         = game
