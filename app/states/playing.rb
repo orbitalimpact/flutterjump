@@ -6,12 +6,14 @@ class Playing < MasterState
   
   def create
     jump = proc do
-      @@flutterjump.jumping = true
-      @@flutterjump.fluttershy.sprite.body.velocity.y = Constants::JUMP_VELOCITY
+      if @game_over == false
+        @@flutterjump.jumping = true
+        @@flutterjump.fluttershy.sprite.body.velocity.y = Constants::JUMP_VELOCITY
       
-      @@flutterjump.fluttershy.sprite.load_texture(@@flutterjump.fluttershy.flying_key)
-      @@flutterjump.fluttershy.sprite.body.set_size(Constants::FLYING_WIDTH, Constants::FLYING_HEIGHT)
-      @@flutterjump.fluttershy.sprite.animations.play(@@flutterjump.fluttershy.flying_key)
+        @@flutterjump.fluttershy.sprite.load_texture(@@flutterjump.fluttershy.flying_key)
+        @@flutterjump.fluttershy.sprite.body.set_size(Constants::FLYING_WIDTH, Constants::FLYING_HEIGHT)
+        @@flutterjump.fluttershy.sprite.animations.play(@@flutterjump.fluttershy.flying_key)
+      end
     end
     
     @objects_to_create = [@@flutterjump.background, @@flutterjump.obstacles, @@flutterjump.ground, @@flutterjump.score, @@flutterjump.keys, @@flutterjump.fluttershy]
@@ -45,7 +47,7 @@ class Playing < MasterState
         @@flutterjump.fluttershy.sprite.body.set_size(Constants::OUCH_WIDTH, Constants::OUCH_HEIGHT)
         @@flutterjump.fluttershy.stop_moving
         
-        keys_to_remove = [Phaser::Keyboard::SPACEBAR, Phaser::Keyboard::LEFT, Phaser::Keyboard::RIGHT, Phaser::Keyboard::A, Phaser::Keyboard::D]
+        keys_to_remove = [Phaser::Keyboard::LEFT, Phaser::Keyboard::RIGHT, Phaser::Keyboard::A, Phaser::Keyboard::D]
         keys_to_remove.each do |key|
           @@phaser_game.input.keyboard.remove_key(key)
         end
@@ -103,5 +105,6 @@ class Playing < MasterState
     end
     
     @@phaser_game.input.on(:down, &try_again)
+    @@flutterjump.keys.spacebar.on(:down, &try_again)
   end
 end
