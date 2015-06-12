@@ -24,6 +24,8 @@ class Story < MasterState
     
     next_slide.call
     @@phaser_game.input.on(:down, &next_slide)
+    
+    @@phaser_game.add.image(Constants::PRESS_ESC_X_POS, Constants::PRESS_ESC_Y_POS, @@flutterjump.text_instructions.press_esc_img_key)
   end
   
   def update

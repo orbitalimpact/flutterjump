@@ -25,6 +25,9 @@ module Constants
   FOREST_SLIDES_X_SCALE_FACTOR  = 1.235
   FOREST_SLIDES_Y_SCALE_FACTOR  = 1.5996
   
+  PRESS_ESC_X_POS               = 0
+  PRESS_ESC_Y_POS               = 0
+  
   # Background properties
   BACKGROUND_X_POS              = 0
   BACKGROUND_Y_POS              = 0
