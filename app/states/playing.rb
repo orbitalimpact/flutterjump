@@ -62,10 +62,6 @@ class Playing < MasterState
         @@flutterjump.fluttershy.sprite.load_texture(@@flutterjump.fluttershy.ouch_key)
         @@flutterjump.fluttershy.sprite.body.set_size(Constants::OUCH_WIDTH, Constants::OUCH_HEIGHT)
         @@flutterjump.fluttershy.stop_moving
-        
-        @@flutterjump.keys.spacebar.reset(:hard)
-        
-        @@flutterjump.keys.spacebar.on(:down, &@jump_or_try_again)
       end
     end
     
