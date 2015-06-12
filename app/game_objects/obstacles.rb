@@ -71,4 +71,10 @@ class Obstacles
     @obstacle_generator = @game.time.events.loop(Phaser::Timer::SECOND * Constants::TIME_INTERVAL, generate_obstacles)
     @obstacle_generator.timer.start
   end
+  
+  def stop
+    @obstacle_generator.timer.stop
+    @group.set_all("body.velocity.x", Constants::STOPPED)
+    @animal_collectible.body.velocity.x = Constants::STOPPED
+  end
 end

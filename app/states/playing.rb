@@ -55,13 +55,12 @@ class Playing < MasterState
         @game_over_text = @@phaser_game.add.image(Constants::GAME_OVER_X_POS, Constants::GAME_OVER_Y_POS, @@flutterjump.text_instructions.game_over_img_key)
         @try_again_text = @@phaser_game.add.sprite(Constants::TRY_AGAIN_X_POS, Constants::TRY_AGAIN_Y_POS, @@flutterjump.text_instructions.try_again_img_key)
         
-        @@flutterjump.obstacles.obstacle_generator.timer.stop
+        @@flutterjump.obstacles.stop
         @@flutterjump.ground.sprite.stop_scroll
-        @@flutterjump.obstacles.group.set_all("body.velocity.x", Constants::STOPPED)
-        @@flutterjump.obstacles.animal_collectible.body.velocity.x = Constants::STOPPED
+        @@flutterjump.fluttershy.stop_moving
+        
         @@flutterjump.fluttershy.sprite.load_texture(@@flutterjump.fluttershy.ouch_key)
         @@flutterjump.fluttershy.sprite.body.set_size(Constants::OUCH_WIDTH, Constants::OUCH_HEIGHT)
-        @@flutterjump.fluttershy.stop_moving
       end
     end
     
