@@ -28,10 +28,8 @@ class Playing < MasterState
       end
     end
     
-    @objects_to_create = [@@flutterjump.background, @@flutterjump.obstacles, @@flutterjump.ground, @@flutterjump.score, @@flutterjump.keys, @@flutterjump.fluttershy]
-    
-    @objects_to_create.each do |object|
-      object.create
+    @@flutterjump.game_objects.each do |object|
+      object.send(:create)
     end
     
     if @down_counter == 0
