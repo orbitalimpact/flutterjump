@@ -40,4 +40,8 @@ class StorySlides
       @game.load.image(name, path)
     end
   end
+  
+  def create
+    # nothing to do in here for this class
+  end
 end
