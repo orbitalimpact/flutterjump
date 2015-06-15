@@ -1,5 +1,3 @@
-require_relative '../constants'
-
 class Background
   attr_reader :sprite
   

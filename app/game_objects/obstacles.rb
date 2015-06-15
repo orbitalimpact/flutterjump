@@ -1,5 +1,3 @@
-require_relative '../constants'
-
 class Obstacles
   attr_reader :group
   attr_reader :obstacle_generator

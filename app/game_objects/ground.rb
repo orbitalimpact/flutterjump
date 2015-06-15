@@ -1,5 +1,3 @@
-require_relative '../constants'
-
 class Ground
   attr_accessor :sprite
   

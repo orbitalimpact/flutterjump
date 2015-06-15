@@ -1,5 +1,3 @@
-require_relative '../constants'
-
 class Fluttershy
   attr_reader :sprite
   attr_reader :walking_key

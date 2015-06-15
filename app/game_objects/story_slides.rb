@@ -1,5 +1,3 @@
-require_relative '../constants'
-
 class StorySlides
   attr_accessor :slide
   attr_accessor :slide_number
