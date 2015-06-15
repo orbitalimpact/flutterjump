@@ -1,24 +1,22 @@
-class StorySlides
+class StorySlides < GameObject
   attr_accessor :slide
   attr_accessor :slide_number
   
-  def initialize(game)
+  def initialize
     @slide_number = 0
-    
-    @game         = game
   end
   
   def preload
     @slides_hash = {
-      "slide 1" => "assets/sprites/story_slides/slide_1.png",
-      "slide 2" => "assets/sprites/story_slides/slide_2.png",
-      "slide 3" => "assets/sprites/story_slides/slide_3.png",
-      "slide 4" => "assets/sprites/story_slides/slide_4.png",
-      "slide 5" => "assets/sprites/story_slides/slide_5.png",
-      "slide 6" => "assets/sprites/story_slides/slide_6.png",
-      "slide 7" => "assets/sprites/story_slides/slide_7.png",
-      "slide 8" => "assets/sprites/story_slides/slide_8.png",
-      "slide 9" => "assets/sprites/story_slides/slide_9.png",
+      "slide 1"  => "assets/sprites/story_slides/slide_1.png",
+      "slide 2"  => "assets/sprites/story_slides/slide_2.png",
+      "slide 3"  => "assets/sprites/story_slides/slide_3.png",
+      "slide 4"  => "assets/sprites/story_slides/slide_4.png",
+      "slide 5"  => "assets/sprites/story_slides/slide_5.png",
+      "slide 6"  => "assets/sprites/story_slides/slide_6.png",
+      "slide 7"  => "assets/sprites/story_slides/slide_7.png",
+      "slide 8"  => "assets/sprites/story_slides/slide_8.png",
+      "slide 9"  => "assets/sprites/story_slides/slide_9.png",
       "slide 10" => "assets/sprites/story_slides/slide_10.png",
       "slide 11" => "assets/sprites/story_slides/slide_11.png",
       "slide 12" => "assets/sprites/story_slides/slide_12.png",
@@ -35,11 +33,7 @@ class StorySlides
     }
     
     @slides_hash.each do |name, path|
-      @game.load.image(name, path)
+      @@game.load.image(name, path)
     end
-  end
-  
-  def create
-    # nothing to do in here for this class
   end
 end
