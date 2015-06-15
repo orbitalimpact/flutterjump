@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/orbitalimpact/opal-phaser
-  revision: 867d4396a92a419f4fd190ef623d874563b96a45
+  revision: cc2635fd4e4215c0666607f28c4808cb0494c9c1
   specs:
     opal-phaser (0.2.0)
       opal (>= 0.7.0, < 0.9.0)
@@ -15,8 +15,6 @@ GEM
       sourcemap (~> 0.1.0)
       sprockets (>= 2.2.3, < 3.0.0)
       tilt (~> 1.4)
-    opal-jquery (0.3.0)
-      opal (~> 0.7.0)
     rack (1.6.1)
     rack-protection (1.5.3)
       rack
@@ -36,7 +34,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  opal-jquery
   opal-phaser!
   sinatra (= 1.4.5)
   sprockets (~> 2)
