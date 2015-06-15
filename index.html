@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset= "utf-8" />
-        <title>Flutterjump</title>
-        <style>
-        body {
-            background-color: gray;
-        }
-        #game {
-            border-style: solid;
-            border-color: white;
-            border-radius: 5px;
-            width: 800px;
-            height: 600px;
-        }
-        </style>
-        <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.js"></script>
-        <script src="/assets/main.js"></script>
-    </head>
-
-    <body>
-        <center>
-            <div id="game">
-            </div>
-        </center>
-      <script>
-        window.onload = function() {
-          opal_game = Opal.Flutterjump.$new()
-        }
-      </script>
-    </body>
+<head>
+  <meta charset= "utf-8" />
+  <title>Flutterjump</title>
+  <style>
+  body {
+    background-color: gray;
+  }
+  #game {
+    border-style: solid;
+    border-color: white;
+    border-radius: 5px;
+  
+    width: 800px;
+    height: 600px;
+    
+    display: inline-block;
+  }
+  </style>
+  <script src="//cdn.jsdelivr.net/phaser/2.2.2/phaser.js"></script>
+  <script src="/assets/main.js"></script>
+</head>
+  
+<body>
+  <center>
+    <div id="game">
+    </div>
+  </center>
+  
+  <script>
+  window.onload = function() {
+    opal_game = Opal.Flutterjump.$new()
+  }
+  </script>
+</body>
 </html>
