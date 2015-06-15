@@ -1,10 +1,10 @@
 class PauseButton
   def initialize(game)
     @pause_img_key  = "pause"
-    @pause_img_path = "assets/sprites/pause.png"
+    @pause_img_path = "assets/sprites/pause_buttons/pause.png"
     
     @play_img_key   = "play"
-    @play_img_path  = "assets/sprites/play.png"
+    @play_img_path  = "assets/sprites/pause_buttons/play.png"
     
     @game           = game
   end
