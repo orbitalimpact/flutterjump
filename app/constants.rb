@@ -9,7 +9,7 @@ module Constants
   TITLE_DIRECTIONS_X_POS        = 310
   TITLE_DIRECTIONS_Y_POS        = 320
   
-  # Gameover scene text positions
+  # Game over scene text positions
   GAME_OVER_X_POS               = 115
   GAME_OVER_Y_POS               = 140
   TRY_AGAIN_X_POS               = 230
