@@ -41,6 +41,10 @@ module Constants
   HIGH_SCORE_X_POS              = 305
   HIGH_SCORE_Y_POS              = 0
   
+  # Pause button position
+  PAUSE_BUTTON_X_POS            = 765
+  PAUSE_BUTTON_Y_POS            = 10
+  
   # Ground properties
   GROUND_X_POS                  = 0
   GROUND_Y_POS                  = 506
