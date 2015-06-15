@@ -38,7 +38,7 @@ module Constants
   SCORE_Y_POS                   = 100
   
   # High score position
-  HIGH_SCORE_X_POS              = 0
+  HIGH_SCORE_X_POS              = 305
   HIGH_SCORE_Y_POS              = 0
   
   # Ground properties
