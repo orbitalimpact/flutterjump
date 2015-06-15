@@ -4,6 +4,7 @@ require 'pp'
 
 require_relative 'constants'
 
+require_relative 'game_objects/game_object'
 require_relative 'game_objects/story_slides'
 require_relative 'game_objects/background'
 require_relative 'game_objects/obstacles'
