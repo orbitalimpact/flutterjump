@@ -1,8 +1,4 @@
 class Story < MasterState
-  def initialize
-    @next_state_counter = 0
-  end
-  
   def create
     @@flutterjump.keys.create
     
@@ -30,11 +26,8 @@ class Story < MasterState
   
   def update
     next_state = proc do
-      if @next_state_counter == 0
-        @@flutterjump.story_slides.slide.destroy
-        @@phaser_game.state.start(:playing)
-        @next_state_counter += 1
-      end
+      @@flutterjump.story_slides.slide.destroy
+      @@phaser_game.state.start(:playing)
     end
     
     @@flutterjump.keys.esc.on(:down, &next_state)
