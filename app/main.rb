@@ -11,6 +11,7 @@ require_relative 'game_objects/ground'
 require_relative 'game_objects/text_instructions'
 require_relative 'game_objects/score'
 require_relative 'game_objects/fluttershy'
+require_relative 'game_objects/pause_button'
 require_relative 'game_objects/keys'
 
 require_relative 'states/master_state'
@@ -26,6 +27,7 @@ class Flutterjump
   attr_reader   :text_instructions
   attr_reader   :score
   attr_reader   :fluttershy
+  attr_reader   :pause_button
   attr_reader   :keys
   
   attr_reader   :game_objects
@@ -50,8 +52,9 @@ class Flutterjump
     @text_instructions = TextInstructions.new(@game)
     @score             = Score.new(@game)
     @fluttershy        = Fluttershy.new(@game)
+    @pause_button      = PauseButton.new(@game)
     @keys              = Keys.new(@game)
     
-    @game_objects = [@story_slides, @background, @obstacles, @text_instructions, @ground, @score, @fluttershy, @keys]
+    @game_objects = [@story_slides, @background, @obstacles, @text_instructions, @ground, @score, @fluttershy, @pause_button, @keys]
   end
 end

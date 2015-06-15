@@ -1,0 +1,31 @@
+class PauseButton
+  def initialize(game)
+    @pause_img_key  = "pause"
+    @pause_img_path = "assets/sprites/pause.png"
+    
+    @play_img_key   = "play"
+    @play_img_path  = "assets/sprites/play.png"
+    
+    @game           = game
+  end
+  
+  def preload
+    @game.load.image(@pause_img_key, @pause_img_path)
+    @game.load.image(@play_img_key,  @play_img_path)
+  end
+  
+  def create
+    play = proc do
+      @game.paused = false
+      @button.load_texture(@pause_img_key)
+    end
+    
+    pause = proc do
+      @game.paused = true
+      @game.input.on(:down, &play)
+      @button.load_texture(@play_img_key)
+    end
+    
+    @button = @game.add.button(765, 10, @pause_img_key, pause)
+  end
+end
