@@ -35,10 +35,10 @@ class Flutterjump
   attr_accessor :jumping
   
   def initialize
-    @game     = Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game")
-    title     = Title.new(@game, self)
-    story     = Story.new(@game, self)
-    playing   = Playing.new(@game, self)
+    @game   = Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game")
+    title   = Title.new(@game, self)
+    story   = Story.new(@game, self)
+    playing = Playing.new(@game, self)
     
     @game.state.add(:title, title, true)
     @game.state.add(:story, story)
@@ -56,6 +56,6 @@ class Flutterjump
     @pause_button      = PauseButton.new(@game)
     @keys              = Keys.new(@game)
     
-    @game_objects = [@story_slides, @background, @obstacles, @text_instructions, @ground, @score, @fluttershy, @pause_button, @keys]
+    @game_objects      = [@story_slides, @background, @obstacles, @text_instructions, @ground, @score, @fluttershy, @pause_button, @keys]
   end
 end
