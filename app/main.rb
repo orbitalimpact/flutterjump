@@ -36,12 +36,12 @@ class Flutterjump
   
   def initialize
     @game   = Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game")
-    title   = Title.new(@game, self)
-    story   = Story.new(@game, self)
+    title   = Title.new(@game,   self)
+    story   = Story.new(@game,   self)
     playing = Playing.new(@game, self)
     
-    @game.state.add(:title, title, true)
-    @game.state.add(:story, story)
+    @game.state.add(:title,   title, true)
+    @game.state.add(:story,   story)
     @game.state.add(:playing, playing)
   end
   
