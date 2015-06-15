@@ -16,6 +16,7 @@ class Playing < MasterState
       else
         @@flutterjump.background.sprite.destroy
         @@flutterjump.obstacles.group.destroy
+        @@flutterjump.obstacles.animal_collectible.destroy
         @@flutterjump.ground.sprite.destroy
         @@flutterjump.fluttershy.sprite.destroy
         
