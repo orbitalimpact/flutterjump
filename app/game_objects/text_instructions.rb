@@ -12,8 +12,8 @@ class TextInstructions < GameObject
     @title_directions_img_key  = "title directions"
     @title_directions_img_path = "assets/text/title_directions.png"
     
-    @game_over_img_key        = "game over"
-    @game_over_img_path       = "assets/text/game_over.png"
+    @game_over_img_key         = "game over"
+    @game_over_img_path        = "assets/text/game_over.png"
     
     @try_again_img_key         = "try again"
     @try_again_img_path        = "assets/text/try_again.png"
