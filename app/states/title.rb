@@ -1,12 +1,4 @@
 class Title < MasterState
-  def preload
-    @@flutterjump.initialize_objects
-    
-    @@flutterjump.game_objects.each do |object|
-      object.send(:preload)
-    end
-  end
-  
   def create
     @@flutterjump.background.create
     @@flutterjump.ground.create

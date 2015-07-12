@@ -16,6 +16,8 @@ require_relative 'game_objects/pause_button'
 require_relative 'game_objects/keys'
 
 require_relative 'states/master_state'
+require_relative 'states/boot'
+require_relative 'states/preload'
 require_relative 'states/title'
 require_relative 'states/story'
 require_relative 'states/playing'
@@ -36,11 +38,15 @@ class Flutterjump
   
   def initialize
     @game   = Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game")
+    boot    = Boot.new(@game,    self)
+    preload = Preload.new(@game, self)
     title   = Title.new(@game,   self)
     story   = Story.new(@game,   self)
     playing = Playing.new(@game, self)
     
-    @game.state.add(:title,   title, true)
+    @game.state.add(:boot,    boot, true)
+    @game.state.add(:preload, preload)
+    @game.state.add(:title,   title)
     @game.state.add(:story,   story)
     @game.state.add(:playing, playing)
   end

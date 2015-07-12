@@ -3,6 +3,11 @@ module Constants
   GAME_WIDTH                    = 800
   GAME_HEIGHT                   = 600
   
+  # Loading bar properties
+  LOADING_BAR_X_POS             = 400
+  LOADING_BAR_Y_POS             = 300
+  LOADING_BAR_ANCHOR            = 0.5
+  
   # Title scene text positions
   TITLE_X_POS                   = 240
   TITLE_Y_POS                   = 250
