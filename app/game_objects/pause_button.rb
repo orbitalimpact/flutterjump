@@ -24,6 +24,6 @@ class PauseButton < GameObject
       @button.load_texture(@play_img_key)
     end
     
-    @button = @@game.add.button(Constants::PAUSE_BUTTON_X_POS, Constants::PAUSE_BUTTON_Y_POS, @pause_img_key, pause)
+    @button = @@game.add.button(Constants::PAUSE_BUTTON_X_POS, Constants::PAUSE_BUTTON_Y_POS, @pause_img_key, &pause)
   end
 end

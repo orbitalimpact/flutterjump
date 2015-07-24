@@ -64,7 +64,7 @@ class Obstacles < GameObject
       @animal_collectible.body.velocity.x = Constants::LEFT_VELOCITY
     end
     
-    @obstacle_generator = @@game.time.events.loop(Phaser::Timer::SECOND * Constants::TIME_INTERVAL, generate_obstacles)
+    @obstacle_generator = @@game.time.events.loop(Phaser::Timer::SECOND * Constants::TIME_INTERVAL, &generate_obstacles)
     @obstacle_generator.timer.start
   end
   

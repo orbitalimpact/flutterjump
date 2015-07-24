@@ -70,10 +70,10 @@ class Playing < MasterState
     end
     
     @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.ground.sprite)
-    @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.obstacles.group, game_over_screen)
+    @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.obstacles.group, &game_over_screen)
     
     if @game_over == false
-      @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.obstacles.animal_collectible, collect_animal)
+      @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.obstacles.animal_collectible, &collect_animal)
     end
     
     @@flutterjump.fluttershy.stop_moving
