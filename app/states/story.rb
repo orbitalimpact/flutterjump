@@ -12,9 +12,9 @@ class Story < MasterState
       end
       
       if @@flutterjump.story_slides.slide_number <= 12
-        @@flutterjump.story_slides.slide.scale.setTo(Constants::COTTAGE_SLIDES_X_SCALE_FACTOR, Constants::COTTAGE_SLIDES_Y_SCALE_FACTOR)
+        @@flutterjump.story_slides.slide.scale.set(Constants::COTTAGE_SLIDES_X_SCALE_FACTOR, Constants::COTTAGE_SLIDES_Y_SCALE_FACTOR)
       else
-        @@flutterjump.story_slides.slide.scale.setTo(Constants::FOREST_SLIDES_X_SCALE_FACTOR, Constants::FOREST_SLIDES_Y_SCALE_FACTOR)
+        @@flutterjump.story_slides.slide.scale.set(Constants::FOREST_SLIDES_X_SCALE_FACTOR, Constants::FOREST_SLIDES_Y_SCALE_FACTOR)
       end
     end
     
