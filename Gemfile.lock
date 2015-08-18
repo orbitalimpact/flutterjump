@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/orbitalimpact/opal-phaser.git
-  revision: fba7cb2cb753dcdc66be3ecfe0c51abec57a7db3
+  revision: 841eb37c03e98afab4ee774072046400dfa28a0d
   specs:
     opal-phaser (0.3.0)
       opal (>= 0.8.0, <= 0.9.0)
@@ -25,7 +25,7 @@ GEM
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
     sourcemap (0.1.1)
-    sprockets (3.2.0)
+    sprockets (3.3.1)
       rack (~> 1.0)
     tilt (1.4.1)
 
