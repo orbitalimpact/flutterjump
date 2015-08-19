@@ -1,7 +1,7 @@
 module Constants
   # Game dimensions
   GAME_WIDTH                    = 800
-  GAME_HEIGHT                   = 600
+  GAME_HEIGHT                   = 550
   
   # Loading bar properties
   LOADING_BAR_X_POS             = 400
@@ -36,7 +36,7 @@ module Constants
   # Background properties
   BACKGROUND_X_POS              = 0
   BACKGROUND_Y_POS              = 0
-  BACKGROUND_SCALE_FACTOR       = 1
+  BACKGROUND_SCALE_FACTOR       = 0.95
   
   # Score position
   SCORE_X_POS                   = 400
@@ -52,7 +52,7 @@ module Constants
   
   # Ground properties
   GROUND_X_POS                  = 0
-  GROUND_Y_POS                  = 506
+  GROUND_Y_POS                  = 456
   GROUND_WIDTH                  = 800
   GROUND_HEIGHT                 = 94
   AUTO_SCROLL_X_SPEED           = -250
@@ -60,7 +60,7 @@ module Constants
   
   # Fluttershy starting position
   FLUTTERSHY_START_X_POS        = 270
-  FLUTTERSHY_START_Y_POS        = 420
+  FLUTTERSHY_START_Y_POS        = 365
   
   # Fluttershy's animation dimensions
   OUCH_WIDTH                    = 102
@@ -84,10 +84,10 @@ module Constants
   LOOP                          = true
   
   # Obstacles' range minimums and maximums
-  TOP_OBSTACLE_Y_RANGE_MIN      = -135
-  TOP_OBSTACLE_Y_RANGE_MAX      = -90
-  BOTTOM_OBSTACLE_Y_RANGE_MIN   = 375
-  BOTTOM_OBSTACLE_Y_RANGE_MAX   = 320
+  TOP_OBSTACLE_Y_RANGE_MIN      = -145
+  TOP_OBSTACLE_Y_RANGE_MAX      = -120
+  BOTTOM_OBSTACLE_Y_RANGE_MIN   = 355
+  BOTTOM_OBSTACLE_Y_RANGE_MAX   = 270
   
   # Obstacles' starting position
   OBSTACLES_START_X_POS         = 800
