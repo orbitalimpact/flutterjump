@@ -19,21 +19,25 @@ class Story < MasterState
     end
     
     next_slide.call
-    @@phaser_game.input.on(:down, &next_slide)
+    @@flutterjump.story_slides.slide.input_enabled = true
+    @@flutterjump.story_slides.slide.events.on(:down, self, &next_slide)
     
-    @@phaser_game.add.image(Constants::PRESS_ESC_X_POS, Constants::PRESS_ESC_Y_POS, @@flutterjump.text_instructions.press_esc_img_key)
-  end
-  
-  def update
-    next_state = proc do
+    @next_state = proc do
       @@flutterjump.story_slides.slide.destroy
       @@phaser_game.state.start(:playing)
     end
     
-    @@flutterjump.keys.esc.on(:down, &next_state)
+    @escape = @@phaser_game.add.image(Constants::PRESS_ESC_X_POS, Constants::PRESS_ESC_Y_POS, @@flutterjump.text_instructions.press_esc_img_key)
+    
+    @escape.input_enabled = true
+    @escape.events.on(:down, self, &@next_state)
+  end
+  
+  def update
+    @@flutterjump.keys.esc.on(:down, &@next_state)
     
     if @@flutterjump.story_slides.slide_number == 23
-      next_state.call
+      @next_state.call
     end
   end
 end
