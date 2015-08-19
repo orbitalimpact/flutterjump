@@ -20,16 +20,18 @@ module Constants
   TRY_AGAIN_X_POS               = 230
   TRY_AGAIN_Y_POS               = 335
   
-  # Intro story properties
+  # Intro story's slides' properties
   SLIDES_X_POS                  = 0
   SLIDES_Y_POS                  = 0
   
+  # Scale factors for slides that take place in the cottage and in the forest
   COTTAGE_SLIDES_X_SCALE_FACTOR = 1.235
-  COTTAGE_SLIDES_Y_SCALE_FACTOR = 1.48
+  COTTAGE_SLIDES_Y_SCALE_FACTOR = 1.3543
   
   FOREST_SLIDES_X_SCALE_FACTOR  = 1.235
-  FOREST_SLIDES_Y_SCALE_FACTOR  = 1.5996
+  FOREST_SLIDES_Y_SCALE_FACTOR  = 1.4665
   
+  # Position for the "Press Esc" notice
   PRESS_ESC_X_POS               = 0
   PRESS_ESC_Y_POS               = 0
   
