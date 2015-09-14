@@ -1,9 +1,9 @@
 class StorySlides < GameObject
-  attr_accessor :slide
-  attr_accessor :slide_number
+  attr_accessor :current_slide
+  attr_accessor :slide_index
   
   def initialize
-    @slide_number = 0
+    @slide_index = 0
   end
   
   def preload

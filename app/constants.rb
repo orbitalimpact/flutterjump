@@ -24,6 +24,9 @@ module Constants
   SLIDES_X_POS                  = 0
   SLIDES_Y_POS                  = 0
   
+  FINAL_COTTAGE_SLIDE           = 12
+  FINAL_SLIDE                   = 22
+  
   # Scale factors for slides that take place in the cottage and in the forest
   COTTAGE_SLIDES_X_SCALE_FACTOR = 1.235
   COTTAGE_SLIDES_Y_SCALE_FACTOR = 1.3543
