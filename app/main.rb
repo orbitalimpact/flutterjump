@@ -37,18 +37,19 @@ class Flutterjump
   attr_accessor :jumping
   
   def initialize
-    @game   = Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game")
-    boot    = Boot.new(@game,    self)
-    preload = Preload.new(@game, self)
-    title   = Title.new(@game,   self)
-    story   = Story.new(@game,   self)
-    playing = Playing.new(@game, self)
+    @game     = Phaser::Game.new(width: Constants::GAME_WIDTH, height: Constants::GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game")
     
-    @game.state.add(:boot,    boot, true)
-    @game.state.add(:preload, preload)
-    @game.state.add(:title,   title)
-    @game.state.add(:story,   story)
-    @game.state.add(:playing, playing)
+    boot      = Boot.new(@game,     self)
+    preload   = Preload.new(@game,  self)
+    title     = Title.new(@game,    self)
+    story     = Story.new(@game,    self)
+    playing   = Playing.new(@game,  self)
+    
+    @game.state.add(:boot,      boot, true)
+    @game.state.add(:preload,   preload)
+    @game.state.add(:title,     title)
+    @game.state.add(:story,     story)
+    @game.state.add(:playing,   playing)
   end
   
   def initialize_objects
