@@ -15,6 +15,6 @@ class Ground < GameObject
     @@game.physics.arcade.enable(@sprite)
     @sprite.body.immovable = true
     
-    @sprite.auto_scroll(Constants::AUTO_SCROLL_X_SPEED, Constants::AUTO_SCROLL_Y_SPEED)
+    @sprite.auto_scroll(Constants::GROUND_AUTOSCROLL_X_SPEED, Constants::GROUND_AUTOSCROLL_Y_SPEED)
   end
 end

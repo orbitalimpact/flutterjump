@@ -63,8 +63,9 @@ module Constants
   GROUND_Y_POS                  = 456
   GROUND_WIDTH                  = 800
   GROUND_HEIGHT                 = 94
-  AUTO_SCROLL_X_SPEED           = -250
-  AUTO_SCROLL_Y_SPEED           = 0
+  
+  GROUND_AUTOSCROLL_X_SPEED           = -250
+  GROUND_AUTOSCROLL_Y_SPEED           = 0
   
   # Fluttershy starting position
   FLUTTERSHY_START_X_POS        = 270
