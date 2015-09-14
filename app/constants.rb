@@ -41,7 +41,10 @@ module Constants
   # Background properties
   BACKGROUND_X_POS              = 0
   BACKGROUND_Y_POS              = 0
-  BACKGROUND_SCALE_FACTOR       = 0.95
+  BACKGROUND_WIDTH              = 800
+  BACKGROUND_HEIGHT             = 456
+  BACKGROUND_AUTOSCROLL_X_SPEED = -50
+  BACKGROUND_AUTOSCROLL_Y_SPEED = 0
   
   # Score position
   SCORE_X_POS                   = 400

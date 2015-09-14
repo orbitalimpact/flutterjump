@@ -55,6 +55,7 @@ class Playing < MasterState
         @try_again_text = @@phaser_game.add.sprite(Constants::TRY_AGAIN_X_POS, Constants::TRY_AGAIN_Y_POS, @@flutterjump.text_instructions.try_again_img_key)
         
         @@flutterjump.obstacles.stop
+        @@flutterjump.background.sprite.stop_scroll
         @@flutterjump.ground.sprite.stop_scroll
         @@flutterjump.fluttershy.stop_moving
         
