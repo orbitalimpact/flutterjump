@@ -6,7 +6,7 @@ class Playing < MasterState
   
   def create
     @jump_or_try_again = proc do
-      if @game_over == false
+      unless @game_over
         @@flutterjump.jumping = true
         @@flutterjump.fluttershy.sprite.body.velocity.y = Constants::JUMP_VELOCITY
       
@@ -42,7 +42,7 @@ class Playing < MasterState
   
   def update
     game_over_screen = proc do
-      if @game_over == false
+      unless @game_over
         @game_over = true
         
         if @@flutterjump.score.amount > $$.localStorage.getItem("high_score").to_i || !$$.localStorage.getItem("high_score")
@@ -73,7 +73,7 @@ class Playing < MasterState
     @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.ground.sprite)
     @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.obstacles.group, &game_over_screen)
     
-    if @game_over == false
+    unless @game_over
       @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.obstacles.animal_collectible, &collect_animal)
     end
     
