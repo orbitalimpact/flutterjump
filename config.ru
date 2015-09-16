@@ -17,4 +17,8 @@ get '/' do
   send_file 'index.html'
 end
 
+get '/style.css' do
+  send_file 'style.css'
+end
+
 run Sinatra::Application
