@@ -57,7 +57,7 @@ class Playing < MasterState
         @@flutterjump.obstacles.stop
         @@flutterjump.background.sprite.stop_scroll
         @@flutterjump.ground.sprite.stop_scroll
-        @@flutterjump.fluttershy.stop_moving
+        @@flutterjump.fluttershy.stop_walking
         
         @@flutterjump.fluttershy.sprite.load_texture(@@flutterjump.fluttershy.ouch_key)
         @@flutterjump.fluttershy.sprite.body.set_size(Constants::OUCH_WIDTH, Constants::OUCH_HEIGHT)
@@ -74,24 +74,24 @@ class Playing < MasterState
     @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.obstacles.group, &game_over_screen)
     
     unless @game_over
+      @@flutterjump.fluttershy.stop_walking
+      
       @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.obstacles.animal_collectible, &collect_animal)
-    end
-    
-    @@flutterjump.fluttershy.stop_moving
-    
-    if (@@flutterjump.keys.right.down? || @@flutterjump.keys.d.down?) && @game_over == false
-      @@flutterjump.fluttershy.move_right
-    end
-    
-    if (@@flutterjump.keys.left.down? || @@flutterjump.keys.a.down?) && @game_over == false
-      @@flutterjump.fluttershy.move_left
-    end
-    
-    if @@flutterjump.jumping && @@flutterjump.fluttershy.sprite.body.touching.down && @game_over == false
-      @@flutterjump.jumping = false
-      @@flutterjump.fluttershy.sprite.load_texture(@@flutterjump.fluttershy.walking_key)
-      @@flutterjump.fluttershy.sprite.body.set_size(Constants::WALKING_WIDTH, Constants::WALKING_HEIGHT)
-      @@flutterjump.fluttershy.sprite.animations.play(@@flutterjump.fluttershy.walking_key)
+      
+      if @@flutterjump.keys.right.down? || @@flutterjump.keys.d.down?
+        @@flutterjump.fluttershy.move_right
+      end
+      
+      if @@flutterjump.keys.left.down? || @@flutterjump.keys.a.down?
+        @@flutterjump.fluttershy.move_left
+      end
+      
+      if @@flutterjump.jumping && @@flutterjump.fluttershy.sprite.body.touching.down
+        @@flutterjump.jumping = false
+        @@flutterjump.fluttershy.sprite.load_texture(@@flutterjump.fluttershy.walking_key)
+        @@flutterjump.fluttershy.sprite.body.set_size(Constants::WALKING_WIDTH, Constants::WALKING_HEIGHT)
+        @@flutterjump.fluttershy.sprite.animations.play(@@flutterjump.fluttershy.walking_key)
+      end
     end
   end
 end

@@ -45,7 +45,7 @@ class Fluttershy < GameObject
     @sprite.body.velocity.x = Constants::LEFT_VELOCITY
   end
   
-  def stop_moving
+  def stop_walking
     @sprite.body.velocity.x = Constants::STOPPED
   end
 end
