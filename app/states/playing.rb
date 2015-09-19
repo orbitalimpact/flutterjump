@@ -13,6 +13,8 @@ class Playing < MasterState
         @@flutterjump.fluttershy.sprite.load_texture(@@flutterjump.fluttershy.flying_key)
         @@flutterjump.fluttershy.sprite.body.set_size(Constants::FLYING_WIDTH, Constants::FLYING_HEIGHT)
         @@flutterjump.fluttershy.sprite.animations.play(@@flutterjump.fluttershy.flying_key)
+        
+        @@flutterjump.fluttershy.play_jump_sound
       else
         @@flutterjump.background.sprite.destroy
         @@flutterjump.obstacles.group.destroy
@@ -68,6 +70,7 @@ class Playing < MasterState
       @@flutterjump.obstacles.animal_collectible.kill
       @@flutterjump.score.amount += 1
       @@flutterjump.score.display.text = @@flutterjump.score.amount
+      @@flutterjump.score.play_score_sound
     end
     
     @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.ground.sprite)
