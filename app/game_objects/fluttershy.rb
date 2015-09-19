@@ -21,7 +21,7 @@ class Fluttershy < GameObject
     @ouch_json       = "assets/sprites/fluttershy/fluttershy_ouch.json"
     
     @jump_sound_key  = "jump"
-    @jump_sound_path = ["assets/audio/jump.m4a", "assets/audio/jump.ogg"]
+    @jump_sound_path = ["assets/audio/jump.ogg", "assets/audio/jump.m4a"]
   end
   
   def preload

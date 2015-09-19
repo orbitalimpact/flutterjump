@@ -5,7 +5,7 @@ class Score < GameObject
   
   def initialize
     @score_sound_key      = "score"
-    @score_sound_path     = ["assets/audio/score.m4a", "assets/audio/score/ogg"]
+    @score_sound_path     = ["assets/audio/score.ogg", "assets/audio/score.m4a"]
   end
   
   def preload
