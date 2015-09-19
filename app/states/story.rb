@@ -16,8 +16,6 @@ class Story < MasterState
       else
         @@flutterjump.story_slides.current_slide.scale.set(Constants::FOREST_SLIDES_X_SCALE_FACTOR, Constants::FOREST_SLIDES_Y_SCALE_FACTOR)
       end
-      
-      puts @@flutterjump.story_slides.slide_index
     end
     
     next_slide.call
