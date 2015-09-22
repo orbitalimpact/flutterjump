@@ -3,7 +3,6 @@ class Fluttershy < GameObject
   attr_reader :walking_key
   attr_reader :flying_key
   attr_reader :ouch_key
-  attr_reader :jump_sound
   
   def initialize
     @sprite_key      = "fluttershy"
@@ -32,13 +31,13 @@ class Fluttershy < GameObject
   end
   
   def create
-    @sprite = @@game.add.sprite(Constants::FLUTTERSHY_START_X_POS, Constants::FLUTTERSHY_START_Y_POS, @walking_key)
+    @sprite = @@game.add.sprite(FLUTTERSHY_START_X_POS, FLUTTERSHY_START_Y_POS, @walking_key)
     @@game.physics.arcade.enable(@sprite)
     @sprite.body.collide_world_bounds = true
-    @sprite.body.gravity.y            = Constants::GRAVITY
+    @sprite.body.gravity.y            = GRAVITY
     
-    @sprite.animations.add(@walking_key, Constants::WALKING_FRAMES, Constants::FRAME_RATE, Constants::LOOP)
-    @sprite.animations.add(@flying_key, Constants::FLYING_FRAMES, Constants::FRAME_RATE, Constants::LOOP)
+    @sprite.animations.add(@walking_key, WALKING_FRAMES, FRAME_RATE, LOOP)
+    @sprite.animations.add(@flying_key, FLYING_FRAMES, FRAME_RATE, LOOP)
     @sprite.animations.play(@walking_key)
     
     @jump_sound = @@game.add.audio(@jump_sound_key)
@@ -49,14 +48,14 @@ class Fluttershy < GameObject
   end
   
   def move_right
-    @sprite.body.velocity.x = Constants::RIGHT_VELOCITY
+    @sprite.body.velocity.x = RIGHT_VELOCITY
   end
   
   def move_left
-    @sprite.body.velocity.x = Constants::LEFT_VELOCITY
+    @sprite.body.velocity.x = LEFT_VELOCITY
   end
   
   def stop_walking
-    @sprite.body.velocity.x = Constants::STOPPED
+    @sprite.body.velocity.x = STOPPED
   end
 end

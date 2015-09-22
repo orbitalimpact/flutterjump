@@ -26,7 +26,7 @@ class Obstacles < GameObject
   
   def preload
     @@game.load.image(@top_obstacle_key,     @top_obstacle_path)
-    @@game.load.image(@bottom_obstacle_key , @bottom_obstacle_path)
+    @@game.load.image(@bottom_obstacle_key, @bottom_obstacle_path)
     
     @@game.load.image(@bunny_key,    @bunny_path)
     @@game.load.image(@bird_key,     @bird_path)
@@ -43,34 +43,34 @@ class Obstacles < GameObject
     animals = [@bunny_key, @bird_key, @duck_key, @ferret_key, @beaver_key, @squirrel_key]
     
     generate_obstacles = proc do
-      top_obstacle_y_range    = @@game.rnd.integer_in_range(Constants::TOP_OBSTACLE_Y_RANGE_MIN, Constants::TOP_OBSTACLE_Y_RANGE_MAX)
-      bottom_obstacle_y_range = @@game.rnd.integer_in_range(Constants::BOTTOM_OBSTACLE_Y_RANGE_MIN, Constants::BOTTOM_OBSTACLE_Y_RANGE_MAX)
+      top_obstacle_y_range    = @@game.rnd.integer_in_range(TOP_OBSTACLE_Y_RANGE_MIN, TOP_OBSTACLE_Y_RANGE_MAX)
+      bottom_obstacle_y_range = @@game.rnd.integer_in_range(BOTTOM_OBSTACLE_Y_RANGE_MIN, BOTTOM_OBSTACLE_Y_RANGE_MAX)
       
-      top_obstacle    = @group.create(Constants::OBSTACLES_START_X_POS, top_obstacle_y_range, @top_obstacle_key)
-      top_obstacle.body.set_size(Constants::TOP_OBSTACLE_WIDTH, Constants::TOP_OBSTACLE_HEIGHT, Constants::TOP_OBSTACLE_X_OFFSET)
+      top_obstacle    = @group.create(OBSTACLES_START_X_POS, top_obstacle_y_range, @top_obstacle_key)
+      top_obstacle.body.set_size(TOP_OBSTACLE_WIDTH, TOP_OBSTACLE_HEIGHT, TOP_OBSTACLE_X_OFFSET)
       
-      bottom_obstacle = @group.create(Constants::OBSTACLES_START_X_POS, bottom_obstacle_y_range, @bottom_obstacle_key)
-      bottom_obstacle.body.set_size(Constants::BOTTOM_OBSTACLE_WIDTH, Constants::BOTTOM_OBSTACLE_HEIGHT, Constants::BOTTOM_OBSTACLE_X_OFFSET, Constants::BOTTOM_OBSTACLE_Y_OFFSET)
+      bottom_obstacle = @group.create(OBSTACLES_START_X_POS, bottom_obstacle_y_range, @bottom_obstacle_key)
+      bottom_obstacle.body.set_size(BOTTOM_OBSTACLE_WIDTH, BOTTOM_OBSTACLE_HEIGHT, BOTTOM_OBSTACLE_X_OFFSET, BOTTOM_OBSTACLE_Y_OFFSET)
       
       @group.set_all("body.immovable", true)
-      @group.set_all("body.velocity.x", Constants::LEFT_VELOCITY)
+      @group.set_all("body.velocity.x", LEFT_VELOCITY)
       
       animal_y_pos  = (bottom_obstacle.y - top_obstacle.y) / 2
       random_animal = rand(animals.length)
       
-      @animal_collectible = @@game.add.sprite(Constants::ANIMAL_START_X_POS, animal_y_pos, animals[random_animal])
-      @animal_collectible.scale.set(Constants::ANIMAL_SCALE_FACTOR)
+      @animal_collectible = @@game.add.sprite(ANIMAL_START_X_POS, animal_y_pos, animals[random_animal])
+      @animal_collectible.scale.set(ANIMAL_SCALE_FACTOR)
       @@game.physics.arcade.enable(@animal_collectible)
-      @animal_collectible.body.velocity.x = Constants::LEFT_VELOCITY
+      @animal_collectible.body.velocity.x = LEFT_VELOCITY
     end
     
-    @obstacle_generator = @@game.time.events.loop(Phaser::Timer::SECOND * Constants::TIME_INTERVAL, &generate_obstacles)
+    @obstacle_generator = @@game.time.events.loop(Phaser::Timer::SECOND * TIME_INTERVAL, &generate_obstacles)
     @obstacle_generator.timer.start
   end
   
   def stop
     @obstacle_generator.timer.stop
-    @group.set_all("body.velocity.x", Constants::STOPPED)
-    @animal_collectible.body.velocity.x = Constants::STOPPED
+    @group.set_all("body.velocity.x", STOPPED)
+    @animal_collectible.body.velocity.x = STOPPED
   end
 end

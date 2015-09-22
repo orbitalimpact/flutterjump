@@ -11,7 +11,7 @@ class Background < GameObject
   end
   
   def create
-    @sprite = @@game.add.tile_sprite(Constants::BACKGROUND_X_POS, Constants::BACKGROUND_Y_POS, Constants::BACKGROUND_WIDTH, Constants::BACKGROUND_HEIGHT, @sprite_key)
-    @sprite.auto_scroll(Constants::BACKGROUND_AUTOSCROLL_X_SPEED, Constants::BACKGROUND_AUTOSCROLL_Y_SPEED)
+    @sprite = @@game.add.tile_sprite(BACKGROUND_X_POS, BACKGROUND_Y_POS, BACKGROUND_WIDTH, BACKGROUND_HEIGHT, @sprite_key)
+    @sprite.auto_scroll(BACKGROUND_AUTOSCROLL_X_SPEED, BACKGROUND_AUTOSCROLL_Y_SPEED)
   end
 end

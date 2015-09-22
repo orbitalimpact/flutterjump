@@ -1,7 +1,6 @@
 class Score < GameObject
   attr_accessor :amount
   attr_reader   :display
-  attr_reader   :sound
   
   def initialize
     @score_sound_key      = "score"
@@ -14,7 +13,7 @@ class Score < GameObject
   
   def create
     @amount  = 0
-    @display = @@game.add.text(Constants::SCORE_X_POS, Constants::SCORE_Y_POS, @amount.to_s, {font: "30px Verdana"})
+    @display = @@game.add.text(SCORE_X_POS, SCORE_Y_POS, @amount.to_s, {font: "30px Verdana"})
     
     @sound   = @@game.add.audio(@score_sound_key)
   end

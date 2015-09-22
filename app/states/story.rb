@@ -37,7 +37,7 @@ class Story < MasterState
   def update
     @@flutterjump.keys.esc.on(:down, &@next_state)
     
-    if @@flutterjump.story_slides.slide_index > Constants::FINAL_SLIDE
+    if @@flutterjump.story_slides.slide_index > FINAL_SLIDE
       @next_state.call
     end
   end

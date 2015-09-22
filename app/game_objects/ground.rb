@@ -11,10 +11,10 @@ class Ground < GameObject
   end
   
   def create
-    @sprite = @@game.add.tile_sprite(Constants::GROUND_X_POS, Constants::GROUND_Y_POS, Constants::GROUND_WIDTH, Constants::GROUND_HEIGHT, @sprite_key)
+    @sprite = @@game.add.tile_sprite(GROUND_X_POS, GROUND_Y_POS, GROUND_WIDTH, GROUND_HEIGHT, @sprite_key)
     @@game.physics.arcade.enable(@sprite)
     @sprite.body.immovable = true
     
-    @sprite.auto_scroll(Constants::GROUND_AUTOSCROLL_X_SPEED, Constants::GROUND_AUTOSCROLL_Y_SPEED)
+    @sprite.auto_scroll(GROUND_AUTOSCROLL_X_SPEED, GROUND_AUTOSCROLL_Y_SPEED)
   end
 end

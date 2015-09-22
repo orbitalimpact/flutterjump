@@ -1,4 +1,6 @@
 class GameObject
+  include Constants
+  
   def initialize(game)
     @@game = game
   end
