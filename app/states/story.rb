@@ -6,15 +6,15 @@ class Story < MasterState
       @@flutterjump.story_slides.slide_index += 1
       
       if @@flutterjump.story_slides.slide_index == 1
-        @@flutterjump.story_slides.current_slide = @@phaser_game.add.image(Constants::SLIDES_X_POS, Constants::SLIDES_Y_POS, "slide #{@@flutterjump.story_slides.slide_index}")
-      elsif @@flutterjump.story_slides.slide_index <= Constants::FINAL_SLIDE
+        @@flutterjump.story_slides.current_slide = @@phaser_game.add.image(SLIDES_X_POS, SLIDES_Y_POS, "slide #{@@flutterjump.story_slides.slide_index}")
+      elsif @@flutterjump.story_slides.slide_index <= FINAL_SLIDE
         @@flutterjump.story_slides.current_slide.load_texture("slide #{@@flutterjump.story_slides.slide_index}")
       end
       
-      if @@flutterjump.story_slides.slide_index <= Constants::FINAL_COTTAGE_SLIDE
-        @@flutterjump.story_slides.current_slide.scale.set(Constants::COTTAGE_SLIDES_X_SCALE_FACTOR, Constants::COTTAGE_SLIDES_Y_SCALE_FACTOR)
+      if @@flutterjump.story_slides.slide_index <= FINAL_COTTAGE_SLIDE
+        @@flutterjump.story_slides.current_slide.scale.set(COTTAGE_SLIDES_X_SCALE_FACTOR, COTTAGE_SLIDES_Y_SCALE_FACTOR)
       else
-        @@flutterjump.story_slides.current_slide.scale.set(Constants::FOREST_SLIDES_X_SCALE_FACTOR, Constants::FOREST_SLIDES_Y_SCALE_FACTOR)
+        @@flutterjump.story_slides.current_slide.scale.set(FOREST_SLIDES_X_SCALE_FACTOR, FOREST_SLIDES_Y_SCALE_FACTOR)
       end
     end
     
@@ -28,10 +28,10 @@ class Story < MasterState
       @@phaser_game.state.start(:playing)
     end
     
-    @escape = @@phaser_game.add.image(Constants::PRESS_ESC_X_POS, Constants::PRESS_ESC_Y_POS, @@flutterjump.text_instructions.press_esc_img_key)
+    @skip = @@phaser_game.add.image(SKIP_X_POS, SKIP_Y_POS, @@flutterjump.instructions.skip_key)
     
-    @escape.input_enabled = true
-    @escape.events.on(:down, self, &@next_state)
+    @skip.input_enabled = true
+    @skip.events.on(:down, self, &@next_state)
   end
   
   def update

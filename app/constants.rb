@@ -34,9 +34,9 @@ module Constants
   FOREST_SLIDES_X_SCALE_FACTOR  = 1.235
   FOREST_SLIDES_Y_SCALE_FACTOR  = 1.4665
   
-  # Position for the "Press Esc" notice
-  PRESS_ESC_X_POS               = 0
-  PRESS_ESC_Y_POS               = 0
+  # Position for the "Skip" notice
+  SKIP_X_POS                    = 0
+  SKIP_Y_POS                    = 0
   
   # Background properties
   BACKGROUND_X_POS              = 0
@@ -64,8 +64,13 @@ module Constants
   GROUND_WIDTH                  = 800
   GROUND_HEIGHT                 = 94
   
-  GROUND_AUTOSCROLL_X_SPEED           = -250
-  GROUND_AUTOSCROLL_Y_SPEED           = 0
+  GROUND_AUTOSCROLL_X_SPEED     = -250
+  GROUND_AUTOSCROLL_Y_SPEED     = 0
+  
+  # Controls image properties
+  CONTROLS_IMAGE_X_POS          = 200
+  CONTROLS_IMAGE_Y_POS          = 250
+  CONTROLS_IMAGE_DURATION       = 2500
   
   # Fluttershy starting position
   FLUTTERSHY_START_X_POS        = 270
