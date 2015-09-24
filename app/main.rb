@@ -7,6 +7,7 @@ require_relative 'constants'
 require_relative 'game_objects/game_object'
 require_relative 'game_objects/story_slides'
 require_relative 'game_objects/background'
+require_relative 'game_objects/sounds'
 require_relative 'game_objects/obstacles'
 require_relative 'game_objects/ground'
 require_relative 'game_objects/instructions'
@@ -27,6 +28,7 @@ class Flutterjump
   
   attr_reader   :story_slides
   attr_reader   :background
+  attr_reader   :sounds
   attr_reader   :obstacles
   attr_reader   :ground
   attr_reader   :instructions
@@ -41,11 +43,11 @@ class Flutterjump
   def initialize
     @game   = Phaser::Game.new(width: GAME_WIDTH, height: GAME_HEIGHT, renderer: Phaser::CANVAS, parent: "game")
     
-    boot    = Boot.new(@game,     self)
-    preload = Preload.new(@game,  self)
-    title   = Title.new(@game,    self)
-    story   = Story.new(@game,    self)
-    playing = Playing.new(@game,  self)
+    boot    = Boot.new(@game,    self)
+    preload = Preload.new(@game, self)
+    title   = Title.new(@game,   self)
+    story   = Story.new(@game,   self)
+    playing = Playing.new(@game, self)
     
     @game.state.add(:boot,    boot, true)
     @game.state.add(:preload, preload)
@@ -57,6 +59,7 @@ class Flutterjump
   def initialize_objects
     @story_slides = StorySlides.new(@game)
     @background   = Background.new(@game)
+    @sounds       = Sounds.new(@game)
     @obstacles    = Obstacles.new(@game)
     @ground       = Ground.new(@game)
     @instructions = Instructions.new(@game)
@@ -65,6 +68,6 @@ class Flutterjump
     @pause_button = PauseButton.new(@game)
     @keys         = Keys.new(@game)
     
-    @game_objects = [@story_slides, @background, @obstacles, @ground, @instructions, @score, @fluttershy, @pause_button, @keys]
+    @game_objects = [@story_slides, @background, @sounds, @obstacles, @ground, @instructions, @score, @fluttershy, @pause_button, @keys]
   end
 end

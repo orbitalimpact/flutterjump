@@ -18,16 +18,12 @@ class Fluttershy < GameObject
     @ouch_key        = "ouch"
     @ouch_img        = "assets/sprites/fluttershy/fluttershy_ouch.png"
     @ouch_json       = "assets/sprites/fluttershy/fluttershy_ouch.json"
-    
-    @jump_sound_key  = "jump"
-    @jump_sound_path = ["assets/audio/jump.ogg", "assets/audio/jump.m4a"]
   end
   
   def preload
     @@game.load.atlas(@walking_key,    @walking_img, @walking_json)
     @@game.load.atlas(@flying_key,     @flying_img, @flying_json)
     @@game.load.image(@ouch_key,       @ouch_img)
-    @@game.load.audio(@jump_sound_key, @jump_sound_path)
   end
   
   def create
@@ -39,12 +35,6 @@ class Fluttershy < GameObject
     @sprite.animations.add(@walking_key, WALKING_FRAMES, FRAME_RATE, LOOP)
     @sprite.animations.add(@flying_key, FLYING_FRAMES, FRAME_RATE, LOOP)
     @sprite.animations.play(@walking_key)
-    
-    @jump_sound = @@game.add.audio(@jump_sound_key)
-  end
-  
-  def play_jump_sound
-    @jump_sound.play
   end
   
   def move_right

@@ -14,7 +14,7 @@ class Playing < MasterState
         @@flutterjump.fluttershy.sprite.body.set_size(FLYING_WIDTH, FLYING_HEIGHT)
         @@flutterjump.fluttershy.sprite.animations.play(@@flutterjump.fluttershy.flying_key)
         
-        @@flutterjump.fluttershy.play_jump_sound
+        @@flutterjump.sounds.jump.play
       else
         @@flutterjump.background.sprite.destroy
         @@flutterjump.obstacles.group.destroy
@@ -36,6 +36,8 @@ class Playing < MasterState
     end
     
     if @down_counter == 0
+    @@flutterjump.sounds.music.play
+    
       @@flutterjump.keys.spacebar.on(:down, &@jump_or_try_again)
       @@phaser_game.input.on(        :down, &@jump_or_try_again)
       @down_counter += 1
@@ -46,6 +48,9 @@ class Playing < MasterState
     game_over_screen = proc do
       unless @game_over
         @game_over = true
+        
+        @@flutterjump.sounds.music.stop
+        @@flutterjump.sounds.game_over.play
         
         if @@flutterjump.score.amount > $$.localStorage.getItem("high_score").to_i || !$$.localStorage.getItem("high_score")
           $$.localStorage.setItem("high_score", @@flutterjump.score.amount)
@@ -70,7 +75,7 @@ class Playing < MasterState
       @@flutterjump.obstacles.animal_collectible.kill
       @@flutterjump.score.amount += 1
       @@flutterjump.score.display.text = @@flutterjump.score.amount
-      @@flutterjump.score.play_score_sound
+      @@flutterjump.sounds.score.play
     end
     
     @@phaser_game.physics.arcade.collide(@@flutterjump.fluttershy.sprite, @@flutterjump.ground.sprite)
