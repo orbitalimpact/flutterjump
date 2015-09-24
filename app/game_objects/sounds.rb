@@ -6,16 +6,16 @@ class Sounds < GameObject
   
   def initialize
     @jump_key       = "jump"
-    @jump_path      = ["assets/audio/jump.ogg", "assets/audio/jump.m4a"]
+    @jump_path      = ["assets/audio/jump.ogg",       "assets/audio/jump.m4a",       "assets/audio/jump.mp3"]
     
     @score_key      = "score"
-    @score_path     = ["assets/audio/score.ogg", "assets/audio/score.m4a"]
+    @score_path     = ["assets/audio/score.ogg",      "assets/audio/score.m4a",      "assets/audio/score.mp3"]
     
     @music_key      = "music"
-    @music_path     = ["assets/audio/game_music.ogg", "assets/audio/game_music.m4a"]
+    @music_path     = ["assets/audio/game_music.ogg", "assets/audio/game_music.m4a", "assets/audio/game_music.mp3"]
     
     @game_over_key  = "game over"
-    @game_over_path = ["assets/audio/game_over.ogg", "assets/audio/game_over.m4a"]
+    @game_over_path = ["assets/audio/game_over.ogg",  "assets/audio/game_over.m4a",  "assets/audio/game_over.mp3"]
   end
   
   def preload
