@@ -12,10 +12,10 @@ class Sounds < GameObject
     @score_path     = ["assets/audio/score.ogg",      "assets/audio/score.mp3",       "assets/audio/score.m4a"]
     
     @music_key      = "music"
-    @music_path     = ["assets/audio/game_music.ogg", "assets/audio/game_over.mp3",   "assets/audio/game_music.m4a"]
+    @music_path     = ["assets/audio/game_music.ogg", "assets/audio/game_music.mp3",   "assets/audio/game_music.m4a"]
     
     @game_over_key  = "game over"
-    @game_over_path = ["assets/audio/game_over.ogg",  "assets/audio/game_music.mp3",  "assets/audio/game_over.m4a"]
+    @game_over_path = ["assets/audio/game_over.ogg",  "assets/audio/game_over.mp3",  "assets/audio/game_over.m4a"]
   end
   
   def preload
