@@ -1,7 +1,7 @@
 class Playing < MasterState
   def initialize
-    @game_over    = false
-    @down_counter = 0
+    @game_over     = false
+    @has_been_down = false
   end
   
   def create
@@ -35,12 +35,12 @@ class Playing < MasterState
       object.send(:create)
     end
     
-    if @down_counter == 0
     @@flutterjump.sounds.music.play
     
+    unless @has_been_down
       @@flutterjump.keys.spacebar.on(:down, &@jump_or_try_again)
       @@phaser_game.input.on(        :down, &@jump_or_try_again)
-      @down_counter += 1
+      @has_been_down = true
     end
   end
   
