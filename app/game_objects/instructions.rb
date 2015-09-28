@@ -41,7 +41,7 @@ class Instructions < GameObject
       controls = @@game.add.image(CONTROLS_IMAGE_X_POS, CONTROLS_IMAGE_Y_POS, @controls_key)
       controls.alpha = 0
     
-      @@game.add.tween(controls).to(properties: {alpha: 1}, duration: CONTROLS_IMAGE_DURATION, ease: Phaser::Easing::Linear.None, auto_start: true, delay: 0, repeat: 0, yoyo: true)
+      @@game.add.tween(controls).to(properties: {alpha: 1}, duration: CONTROLS_IMAGE_DURATION, ease: Phaser::Easing::Linear.None, auto_start: true, yoyo: true)
       @controls_have_been_shown = true
     end
   end
