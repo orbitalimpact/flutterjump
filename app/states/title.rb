@@ -3,7 +3,7 @@ class Title < MasterState
     @@flutterjump.background.create
     @@flutterjump.ground.create
     
-    title            = @@phaser_game.add.image(TITLE_X_POS, TITLE_Y_POS, @@flutterjump.instructions.title_key)
+    title          = @@phaser_game.add.image(TITLE_X_POS, TITLE_Y_POS, @@flutterjump.instructions.title_key)
     click_to_start = @@phaser_game.add.image(TITLE_DIRECTIONS_X_POS, TITLE_DIRECTIONS_Y_POS, @@flutterjump.instructions.click_to_start_key)
     
     next_state = proc do
