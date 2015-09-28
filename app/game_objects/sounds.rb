@@ -3,6 +3,7 @@ class Sounds < GameObject
   attr_reader :score
   attr_reader :music
   attr_reader :game_over
+  attr_reader :audio_objects
   
   def initialize
     @jump_key       = "jump"
@@ -26,9 +27,13 @@ class Sounds < GameObject
   end
   
   def create
-    @jump      = @@game.add.audio(@jump_key)
-    @score     = @@game.add.audio(@score_key)
-    @music     = @@game.add.audio(@music_key)
-    @game_over = @@game.add.audio(@game_over_key)
+    sound_names = ["jump", "score", "music", "game_over"]
+    @audio_objects = []
+    
+    sound_names.each do |name|
+      sound = @@game.add.audio(instance_variable_get("@#{name}_key"))
+      instance_variable_set("@#{name}", sound)
+      @audio_objects.push(instance_variable_get("@#{name}"))
+    end
   end
 end
