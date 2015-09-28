@@ -17,6 +17,7 @@ class Playing < MasterState
         @@flutterjump.sounds.jump.play
       else
         @@flutterjump.background.sprite.destroy
+        @@flutterjump.sounds.audio_objects.each { |object| object.destroy }
         @@flutterjump.obstacles.group.destroy
         @@flutterjump.obstacles.animal_collectible.destroy
         @@flutterjump.ground.sprite.destroy
