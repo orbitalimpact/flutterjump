@@ -36,7 +36,7 @@ class Playing < MasterState
       object.send(:create)
     end
     
-    @@flutterjump.sounds.music.play
+    @@flutterjump.sounds.music.play(loop: true)
     
     unless @has_been_down
       @@flutterjump.keys.spacebar.on(:down, &@jump_or_try_again)
