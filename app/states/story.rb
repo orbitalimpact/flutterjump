@@ -25,6 +25,8 @@ class Story < MasterState
     
     @next_state = proc do
       @@flutterjump.story_slides.current_slide.destroy
+      @@flutterjump.sounds.intro_music.stop
+      @@flutterjump.sounds.audio_objects.each { |object| object.destroy }
       @@phaser_game.state.start(:playing)
     end
     

@@ -36,7 +36,7 @@ class Playing < MasterState
       object.send(:create)
     end
     
-    @@flutterjump.sounds.music.play(loop: true)
+    @@flutterjump.sounds.game_music.play(loop: true)
     
     unless @has_been_down
       @@flutterjump.keys.spacebar.on(:down, &@jump_or_try_again)
@@ -50,7 +50,7 @@ class Playing < MasterState
       unless @game_over
         @game_over = true
         
-        @@flutterjump.sounds.music.stop
+        @@flutterjump.sounds.game_music.stop
         @@flutterjump.sounds.game_over.play
         
         if @@flutterjump.score.amount > $$.localStorage.getItem("high_score").to_i || !$$.localStorage.getItem("high_score")
