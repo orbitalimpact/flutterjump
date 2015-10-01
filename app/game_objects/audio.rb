@@ -21,15 +21,15 @@ class Audio < GameObject
     @ios_game_music_path      = "assets/audio/music/game_music.m4a"
     
     @jump_key                 = "jump"
-    @non_ios_jump_path        = ["assets/audio/effects/jump.ogg",        "assets/audio/effects/jump.mp3"]
+    @non_ios_jump_path        = ["assets/audio/effects/jump.ogg",      "assets/audio/effects/jump.mp3"]
     @ios_jump_path            = "assets/audio/effects/jump.m4a"
     
     @score_key                = "score"
-    @non_ios_score_path       = ["assets/audio/effects/score.ogg",       "assets/audio/effects/score.mp3"]
+    @non_ios_score_path       = ["assets/audio/effects/score.ogg",     "assets/audio/effects/score.mp3"]
     @ios_score_path           = "assets/audio/effects/score.m4a"
     
     @game_over_key            = "game over"
-    @non_ios_game_over_path   = ["assets/audio/effects/game_over.ogg",   "assets/audio/effects/game_over.mp3"]
+    @non_ios_game_over_path   = ["assets/audio/effects/game_over.ogg", "assets/audio/effects/game_over.mp3"]
     @ios_game_over_path       = "assets/audio/effects/game_over.m4a"
   end
   
