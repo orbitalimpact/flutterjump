@@ -1,10 +1,11 @@
-class Sounds < GameObject
+class Audio < GameObject
   attr_reader :jump
   attr_reader :score
   attr_reader :intro_music
+  attr_reader :story_music
   attr_reader :game_music
   attr_reader :game_over
-  attr_reader :audio_objects
+  attr_reader :sounds
   
   def initialize
     @jump_key                 = "jump"
@@ -17,7 +18,11 @@ class Sounds < GameObject
     
     @intro_music_key          = "intro music"
     @non_ios_intro_music_path = ["assets/audio/intro_music.ogg", "assets/audio/intro_music.mp3"]
-    @ios_intro_music_path     = "assets/audio/intro_music.m4a"
+    @ios_intro_music_path     = "intro music"
+    
+    @story_music_key          = "story music"
+    @non_ios_story_music_path = ["assets/audio/story_music.ogg", "assets/audio/story_music.mp3"]
+    @ios_story_music_path     = "assets/audio/story_music.m4a"
     
     @game_music_key           = "game music"
     @non_ios_game_music_path  = ["assets/audio/game_music.ogg",  "assets/audio/game_music.mp3"]
@@ -33,26 +38,28 @@ class Sounds < GameObject
       @@game.load.audio(@jump_key,        @ios_jump_path)
       @@game.load.audio(@score_key,       @ios_score_path)
       @@game.load.audio(@intro_music_key, @ios_intro_music_path)
+      @@game.load.audio(@story_music_key, @ios_story_music_path)
       @@game.load.audio(@game_music_key,  @ios_game_music_path)
       @@game.load.audio(@game_over_key,   @ios_game_over_path)
     else
       @@game.load.audio(@jump_key,        @non_ios_jump_path)
       @@game.load.audio(@score_key,       @non_ios_score_path)
       @@game.load.audio(@intro_music_key, @non_ios_intro_music_path)
+      @@game.load.audio(@story_music_key, @non_ios_story_music_path)
       @@game.load.audio(@game_music_key,  @non_ios_game_music_path)
       @@game.load.audio(@game_over_key,   @non_ios_game_over_path)
     end
   end
   
   def create
-    sound_names = ["jump", "score", "intro_music", "game_music", "game_over"]
-    @audio_objects = []
+    sound_names = ["jump", "score", "intro_music", "story_music", "game_music", "game_over"]
+    @sounds = []
     
     sound_names.each do |name|
       sound = @@game.add.audio(instance_variable_get("@#{name}_key"))
       
       instance_variable_set("@#{name}", sound)
-      @audio_objects.push(instance_variable_get("@#{name}"))
+      @sounds.push(instance_variable_get("@#{name}"))
     end
   end
 end
