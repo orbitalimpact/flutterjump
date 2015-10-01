@@ -14,6 +14,9 @@ module Constants
   TITLE_DIRECTIONS_X_POS        = 310
   TITLE_DIRECTIONS_Y_POS        = 320
   
+  # Intro music fade-in duration
+  INTRO_MUSIC_FADE_DURATION     = 1500
+  
   # Game over scene text positions
   GAME_OVER_X_POS               = 115
   GAME_OVER_Y_POS               = 140

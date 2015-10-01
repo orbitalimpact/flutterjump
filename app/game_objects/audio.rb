@@ -1,7 +1,7 @@
 class Audio < GameObject
   attr_reader :jump
   attr_reader :score
-  attr_reader :intro_music
+  attr_reader :title_music
   attr_reader :story_music
   attr_reader :game_music
   attr_reader :game_over
@@ -16,9 +16,9 @@ class Audio < GameObject
     @non_ios_score_path       = ["assets/audio/score.ogg",       "assets/audio/score.mp3"]
     @ios_score_path           = "assets/audio/score.m4a"
     
-    @intro_music_key          = "intro music"
-    @non_ios_intro_music_path = ["assets/audio/intro_music.ogg", "assets/audio/intro_music.mp3"]
-    @ios_intro_music_path     = "intro music"
+    @title_music_key          = "title music"
+    @non_ios_title_music_path = ["assets/audio/title_music.ogg", "assets/audio/title_music.mp3"]
+    @ios_title_music_path     = "title music"
     
     @story_music_key          = "story music"
     @non_ios_story_music_path = ["assets/audio/story_music.ogg", "assets/audio/story_music.mp3"]
@@ -37,14 +37,14 @@ class Audio < GameObject
     if @@game.device.iOS
       @@game.load.audio(@jump_key,        @ios_jump_path)
       @@game.load.audio(@score_key,       @ios_score_path)
-      @@game.load.audio(@intro_music_key, @ios_intro_music_path)
+      @@game.load.audio(@title_music_key, @ios_title_music_path)
       @@game.load.audio(@story_music_key, @ios_story_music_path)
       @@game.load.audio(@game_music_key,  @ios_game_music_path)
       @@game.load.audio(@game_over_key,   @ios_game_over_path)
     else
       @@game.load.audio(@jump_key,        @non_ios_jump_path)
       @@game.load.audio(@score_key,       @non_ios_score_path)
-      @@game.load.audio(@intro_music_key, @non_ios_intro_music_path)
+      @@game.load.audio(@title_music_key, @non_ios_title_music_path)
       @@game.load.audio(@story_music_key, @non_ios_story_music_path)
       @@game.load.audio(@game_music_key,  @non_ios_game_music_path)
       @@game.load.audio(@game_over_key,   @non_ios_game_over_path)
@@ -52,7 +52,7 @@ class Audio < GameObject
   end
   
   def create
-    sound_names = ["jump", "score", "intro_music", "story_music", "game_music", "game_over"]
+    sound_names = ["jump", "score", "title_music", "story_music", "game_music", "game_over"]
     @sounds = []
     
     sound_names.each do |name|

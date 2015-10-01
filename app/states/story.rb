@@ -25,8 +25,8 @@ class Story < MasterState
     
     @next_state = proc do
       @@flutterjump.story_slides.current_slide.destroy
-      @@flutterjump.sounds.intro_music.stop
-      @@flutterjump.sounds.audio_objects.each { |object| object.destroy }
+      @@flutterjump.audio.story_music.stop
+      @@flutterjump.audio.sounds.each { |sound| sound.destroy }
       @@phaser_game.state.start(:playing)
     end
     
@@ -35,7 +35,7 @@ class Story < MasterState
     @skip.input_enabled = true
     @skip.events.on(:down, self, &@next_state)
     
-    @@flutterjump.sounds.intro_music.play(loop: true)
+    @@flutterjump.audio.story_music.play(loop: true)
   end
   
   def update
