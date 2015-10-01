@@ -34,6 +34,8 @@ class Story < MasterState
     
     @skip.input_enabled = true
     @skip.events.on(:down, self, &@next_state)
+    
+    @@flutterjump.sounds.intro_music.play(loop: true)
   end
   
   def update
