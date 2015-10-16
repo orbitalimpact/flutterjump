@@ -1,6 +1,26 @@
 body {
   background-color: gray;
 }
+
+#opal-phaser-badge {
+  font-family: Courier;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2px 5px;
+  color: white;
+}
+
+a:hover {
+  text-decoration: none;
+  color: white;
+  text-decoration: none;
+  background-color: rgba(0,0,0,0.7);
+}
+
 #game {
   border-style: solid;
   border-color: white;
