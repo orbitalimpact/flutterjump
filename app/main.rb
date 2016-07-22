@@ -59,7 +59,7 @@ class Flutterjump
   def initialize_objects
     @story_slides = StorySlides.new(@game)
     @background   = Background.new(@game)
-    @audio       = Audio.new(@game)
+    @audio        = Audio.new(@game)
     @obstacles    = Obstacles.new(@game)
     @ground       = Ground.new(@game)
     @instructions = Instructions.new(@game)
